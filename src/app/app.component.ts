@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { CadastroPage } from '../pages/cadastro/cadastro';
 
 @Component({
   templateUrl: 'app.html'
@@ -12,17 +13,18 @@ import { ListPage } from '../pages/list/list';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+ rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private alertCtrl: AlertController) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'List', component: ListPage },
+      { title: 'Cadastro', component: CadastroPage },
     ];
 
   }
@@ -41,4 +43,28 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+  
+  presentConfirm() {
+    let alert = this.alertCtrl.create({
+      title: 'Confirmar logout',
+      message: 'Você deseja realmente sair do Get Promo?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancelar clicked');
+          }
+        },
+        {
+          text: 'Sair',
+          handler: () => {
+            this.nav.setRoot(InitialPage);
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+  
 }
