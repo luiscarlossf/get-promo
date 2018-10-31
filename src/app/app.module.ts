@@ -8,6 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { InitialPage } from '../pages/initial/initial';
 import { ConfigPage } from '../pages/config/config';
 
+import { SQLite } from '@ionic-native/sqlite';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { DatabaseProvider } from '../providers/database/database';
@@ -35,6 +36,7 @@ import { DatabaseProvider } from '../providers/database/database';
   providers: [
     StatusBar,
     SplashScreen,
+    SQLite,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DatabaseProvider
   ]
