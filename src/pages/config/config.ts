@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 
 import { InitialPage } from '../initial/initial';
+import { Usuario } from '../../users/Usuario';
+import { UserProvider } from '../../providers/user/user';
 
 /**
  * Generated class for the ConfigPage page.
@@ -17,8 +19,9 @@ import { InitialPage } from '../initial/initial';
   templateUrl: 'config.html',
 })
 export class ConfigPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
+  user: Usuario
+  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private uProvider: UserProvider) {
+     console.log('Criando ConfigPage');
   }
 
   ionViewDidLoad() {
@@ -40,6 +43,7 @@ export class ConfigPage {
         {
           text: 'Sim',
           handler: () => {
+           this.uProvider.remove(this.user.apelido, this.user.senha);
             this.navCtrl.setRoot(InitialPage);
           }
         }

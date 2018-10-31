@@ -4,7 +4,7 @@ class Usuario {
     email: string;
     interesses: number[];
 
-    constructor(nome: string, apelido: string, email: string, senha: string, interesses: number[]) {
+    constructor(nome: string, apelido: string, email: string, senha: string) {
         this.nome = nome;
         this.apelido = apelido;
         this.email = email;
