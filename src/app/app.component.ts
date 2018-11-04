@@ -2,10 +2,12 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { AlertController } from 'ionic-angular';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { CadastroPage } from '../pages/cadastro/cadastro';
+import { InitialPage } from '../pages/initial/initial';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -13,7 +15,7 @@ import { CadastroPage } from '../pages/cadastro/cadastro';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
- rootPage: any = HomePage;
+  rootPage: any = InitialPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -23,8 +25,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage },
-      { title: 'Cadastro', component: CadastroPage },
+      { title: 'List', component: ListPage }
     ];
 
   }
@@ -43,7 +44,7 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
-  
+
   presentConfirm() {
     let alert = this.alertCtrl.create({
       title: 'Confirmar logout',
@@ -66,5 +67,6 @@ export class MyApp {
     });
     alert.present();
   }
-  
+
+
 }
