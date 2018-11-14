@@ -4,15 +4,28 @@
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
-
+  <script>
+ /*   var app = angular.module('Myapp', [])
+    app.controller('Mycontroller',function ($scope){
+    	$scope.IsVisible = false;
+    	$scopeShowAndHide = function(value){
+    		$scope.IsVisible = value == "Show";
+    	}
+    });
+</script>
   <ion-content>
     <ion-list>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>
-      <button menuClose ion-item (click)="presentConfirm()">
+      <button menuClose ion-item >
         Perfil
       </button >
+       <div ng-app="Myapp" ng-controller="Mycontroller" ng-show = "isVisible">
+       <button menuClose ion-item ng-show= "mostrarBotao" >
+        Cadastrar Anuncio
+      </button >
+      </div>
       <button menuClose ion-item (click)="presentConfirm()">
         Sair
       </button >

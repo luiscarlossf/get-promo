@@ -8,54 +8,21 @@
 </ion-header>
 
 <ion-content padding>
- <ion-card>
 
-    <img src="assets/imgs/Fast-Food.jpg"/>
 
-    <ion-card-content>
-      <ion-card-title>
-        Promocao de FastFood
-      </ion-card-title>
-      <p>
-        Venha aproveitar o melhor fastfood da cidade com promocao especial.
-      </p>
-    </ion-card-content>
+  <ion-card *ngFor="let item of anuncios">
 
-  </ion-card>
-
-  <ion-card>
-
-    <div>
-      <img src="assets/imgs/pdg.jpg"/>
-    </div>
+    <img src= {{item.src}}/>
 
     <ion-card-content>
       <ion-card-title>
-        Black Friday na PDG
+        {{item.titulo}}
       </ion-card-title>
       <p>
-      Aproveite a Black Friday para se livrar do aluguel e compre um imovel com descontos imperdiveis
+        {{item.descricao}}
       </p>
     </ion-card-content>
 
-
-  </ion-card>
-
-  <ion-card>
-
-    <div>
-      <img src="assets/imgs/carros.jpg"/>
-    </div>
-
-    <ion-card-content>
-      <ion-card-title>
-        Carros 2015 e na SP Japan
-      </ion-card-title>
-      <p>
-        Precos imperdiveis e condicoes especiais para voce andar de carro novo.
-      </p>
-    </ion-card-content>
-
-  </ion-card>
+  </ion-card>  
 
 </ion-content>
