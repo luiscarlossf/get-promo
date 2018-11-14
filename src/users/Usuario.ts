@@ -2,6 +2,7 @@ class Usuario {
     nome: string;
     apelido: string;
     email: string;
+    senha: string;
     interesses: number[];
 
     constructor(nome: string, apelido: string, email: string, senha: string) {

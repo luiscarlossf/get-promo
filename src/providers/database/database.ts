@@ -27,6 +27,7 @@ export class DatabaseProvider {
           this.createTables(db);
 
           this.insertDefaultItems(db);
+          console.log("Criado o banco de dados!");
       }).catch( e => console.log(e));
   }
 
@@ -37,7 +38,7 @@ export class DatabaseProvider {
   }
 
   private insertDefaultItems(db: SQLiteObject) {
-    db.executeSql('select COUNT(id) as qtd from categories', {})
+    db.executeSql('select COUNT(id) as qtd from categories', [])
     .then((data: any) => {
       //Se não existe nenhum registro
       if (data.rows.item(0).qtd == 0) {
