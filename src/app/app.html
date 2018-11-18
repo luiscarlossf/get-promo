@@ -4,14 +4,8 @@
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
-  <script>
- /*   var app = angular.module('Myapp', [])
-    app.controller('Mycontroller',function ($scope){
-    	$scope.IsVisible = false;
-    	$scopeShowAndHide = function(value){
-    		$scope.IsVisible = value == "Show";
-    	}
-    });
+<script type="text/javascript">
+  var anunciante = false; 
 </script>
   <ion-content>
     <ion-list>
@@ -21,10 +15,10 @@
       <button menuClose ion-item >
         Perfil
       </button >
-       <div ng-app="Myapp" ng-controller="Mycontroller" ng-show = "isVisible">
-       <button menuClose ion-item ng-show= "mostrarBotao" >
-        Cadastrar Anuncio
-      </button >
+       <div *ngIf="usuario.anunciante == '1'">
+         <button menuClose ion-item>
+          Cadastrar Anuncio
+         </button >
       </div>
       <button menuClose ion-item (click)="presentConfirm()">
         Sair

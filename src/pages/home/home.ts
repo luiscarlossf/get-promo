@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+declare var google: any;
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+
 
   anuncios: Array<any> = [
     {
@@ -24,9 +27,23 @@ export class HomePage {
       src: "assets/imgs/carros.jpg" 
     }
   ]
+  
+  estabelecimentos = [{
+  nome: 'Estabelecimento1',
+  lat:-5.083974,
+  lng:-42.787884
+  },{
+  nome: 'Estabelecimento2',
+  lat:-5.059952,
+  lng:-42.797722
+  }]
 
   constructor(public navCtrl: NavController) {
 
+  }
+  
+  filtrar(){
+   
   }
 
 }

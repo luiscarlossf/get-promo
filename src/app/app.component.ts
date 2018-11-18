@@ -18,6 +18,9 @@ export class MyApp {
   rootPage: any = InitialPage;
 
   pages: Array<{title: string, component: any}>;
+  
+  usuario: {nome: string, email: string, apelido: string, senha: string, anunciante: string};
+    
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private alertCtrl: AlertController) {
     this.initializeApp();
@@ -27,6 +30,8 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage }
     ];
+    
+    this.usuario ={nome: 'matheus', email: 'matheus@gmail.com', apelido: 'matheus', senha:'123', anunciante: '0'};
 
   }
 
@@ -44,6 +49,8 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+  
+
 
   presentConfirm() {
     let alert = this.alertCtrl.create({
