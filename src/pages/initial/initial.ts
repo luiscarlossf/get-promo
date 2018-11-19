@@ -23,7 +23,7 @@ export class InitialPage {
     console.log('ionViewDidLoad InitialPage');
   }
 
-  buttonPressed() {
+  Login() {
  	this.navCtrl.setRoot(HomePage);
   }
 
