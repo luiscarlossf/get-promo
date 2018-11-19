@@ -1,4 +1,6 @@
-class Anunciante extends Usuario{
+import { Usuario } from './Usuario';
+
+export class Anunciante extends Usuario{
     categorias: number[];
     //adicionar anúncios depois
 
