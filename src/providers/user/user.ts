@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { DatabaseProvider } from '../database/database';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 import { Usuario } from '../../users/Usuario';
 
@@ -14,7 +14,7 @@ import { Usuario } from '../../users/Usuario';
 @Injectable()
 export class UserProvider {
 
-  constructor(private dbProvider: DatabaseProvider, private http: Http) {
+  constructor(private dbProvider: DatabaseProvider, private http: HttpClient) {
     console.log('Hello UserProvider Provider');
   }
 
@@ -27,8 +27,16 @@ export class UserProvider {
   	}).catch((e) => console.error(e));
   }
 
-  public delete(apelido:string){
-    this.http.delete('http://my-serve.com/usuario/deleteUsuario', apelido,{})
+  public delete_user(apelido: string){
+    console.log('Deletendo');
+
+    return  this.http.delete('http://my-serve.com/usuario/deleteUsuario/' + apelido);
+    /**
+    .catch((e)=>{
+      console.error(e);
+    });
+    
+    this.http.delete('http://my-serve.com/usuario/deleteUsuario', apelido)
     .then(data =>{
       console.log(data.status);
       console.log(data.data);
@@ -39,6 +47,7 @@ export class UserProvider {
       console.log(error.error); // error message as string
       console.log(error.headers);
     });
+    **/
   }
    
   public get(apelido: string) {

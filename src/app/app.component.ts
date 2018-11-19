@@ -28,12 +28,9 @@ export class MyApp {
     this.initializeApp();
     this.dbProvider.createDatabase();
     this.user = this.uProvider.get('lui');
-    
+    this.user.apelido = 'lui'
 
     // used for an example of ngFor and navigation
-    //this.config = ConfigPage();
-    //this.config.user = this.user;
-    console.log(this.user.apelido);
 
     this.pages = [
       { title: 'Home', component: HomePage },

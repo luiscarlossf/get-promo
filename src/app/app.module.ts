@@ -11,7 +11,7 @@ import { ConfigPage } from '../pages/config/config';
 import { SQLite } from '@ionic-native/sqlite';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Http } from '@angular/http';
+import { HttpClientModule } from  '@angular/common/http';
 import { DatabaseProvider } from '../providers/database/database';
 import { UserProvider } from '../providers/user/user';
 
@@ -25,6 +25,7 @@ import { UserProvider } from '../providers/user/user';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -39,7 +40,6 @@ import { UserProvider } from '../providers/user/user';
     StatusBar,
     SplashScreen,
     SQLite,
-    Http,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DatabaseProvider,
     UserProvider

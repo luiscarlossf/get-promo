@@ -43,7 +43,7 @@ export class ConfigPage {
         {
           text: 'Sim',
           handler: () => {
-            this.uProvider.delete(this.user.apelido);
+            this.uProvider.delete_user('lui');
             this.navCtrl.setRoot(InitialPage);
           }
         }
