@@ -30,24 +30,12 @@ export class UserProvider {
   public delete_user(apelido: string){
     console.log('Deletendo');
 
-    return  this.http.delete('http://my-serve.com/usuario/deleteUsuario/' + apelido);
-    /**
-    .catch((e)=>{
-      console.error(e);
-    });
-    
-    this.http.delete('http://my-serve.com/usuario/deleteUsuario', apelido)
-    .then(data =>{
-      console.log(data.status);
-      console.log(data.data);
-      console.log(data.heardes);
-
-    }).catch( error => {
-      console.log(error.status);
-      console.log(error.error); // error message as string
-      console.log(error.headers);
-    });
-    **/
+    this.http.delete("http://192.168.0.21:8080/usuario/deleteUsuario/"+apelido)
+      .subscribe(data => {
+        console.log(data);
+       }, error => {
+        console.log(error);
+      });
   }
    
   public get(apelido: string) {
