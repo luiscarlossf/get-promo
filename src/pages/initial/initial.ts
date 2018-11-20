@@ -16,9 +16,10 @@ import { UserProvider } from '../../providers/user/user';
   templateUrl: 'initial.html',
 })
 export class InitialPage {
-  usuario: string = '';
-  senha: string = '';
-  constructor(public navCtrl: NavController, public navParams: NavParams, private uProvider: UserProvider) {
+  emailText: string = '';
+  senhaText: string = '';
+  constructor(public navCtrl: NavController, public navParams: NavParams, private uProvider: UserProvider){
+
   }
 
   ionViewDidLoad() {
@@ -26,12 +27,9 @@ export class InitialPage {
   }
 
   Login() {
-    this.uProvider.login(this.usuario,this.senha);
-    this.navCtrl.setRoot(InitialPage);
+    console.log('entrei no Login');
+    console.log(this.emailText);
+    this.uProvider.login(this.emailText,this.senhaText);
   }
 
-}
-export class User {
-  email: string;
-  password: string;
 }
