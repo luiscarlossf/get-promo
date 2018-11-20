@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { UserProvider } from '../../providers/user/user';
 
 /**
  * Generated class for the InitialPage page.
@@ -15,8 +16,9 @@ import { HomePage } from '../home/home';
   templateUrl: 'initial.html',
 })
 export class InitialPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  usuario: string = '';
+  senha: string = '';
+  constructor(public navCtrl: NavController, public navParams: NavParams, private uProvider: UserProvider) {
   }
 
   ionViewDidLoad() {
@@ -24,7 +26,12 @@ export class InitialPage {
   }
 
   Login() {
- 	this.navCtrl.setRoot(HomePage);
+    this.uProvider.login(this.usuario,this.senha);
+    this.navCtrl.setRoot(InitialPage);
   }
 
+}
+export class User {
+  email: string;
+  password: string;
 }
