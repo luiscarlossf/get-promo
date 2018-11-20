@@ -6,19 +6,26 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { InitialPage } from '../pages/initial/initial';
+import { ConfigPage } from '../pages/config/config';
 
+import { SQLite } from '@ionic-native/sqlite';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { HttpClientModule } from  '@angular/common/http';
+import { DatabaseProvider } from '../providers/database/database';
+import { UserProvider } from '../providers/user/user';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    InitialPage
+    InitialPage,
+    ConfigPage
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -26,12 +33,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     HomePage,
     ListPage,
-    InitialPage
+    InitialPage,
+    ConfigPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    SQLite,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DatabaseProvider,
+    UserProvider
   ]
 })
 export class AppModule {}
