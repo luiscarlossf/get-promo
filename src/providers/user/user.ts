@@ -13,27 +13,26 @@ import { ViewChild } from '@angular/core';
 */
 @Injectable()
 export class UserProvider {
-  navParent: any;
-  // @ViewChild(Nav) nav: Nav;
+  @ViewChild(NavController) nav: NavController;
 
-  constructor(private navCtrl: NavController, private http: HttpClient) {
+  constructor(private http: HttpClient) {
     console.log('Hello UserProvider Provider');
   }
   public login(email: string, senha: string){
-
-    // navParent.push('DetailsTabPage');
     var data = {
         email: email,
         senha: senha
     };
+    return new Promise((resolve, reject) => {
+        // let headers = new Headers();
+        // headers.append('Content-Type', 'application/json');
+        this.http.post("http://url:8000/usuario/login/", data)
+          .subscribe(res => {
+            resolve();
+          }, (err) => {
+            reject(err);
+          });
+    });
     // console.log(data);
-    this.http.post("http://url:8000/usuario/login/", data)
-      .subscribe(data => {
-        console.log(data);
-       }, error => {
-        var navParent = this.navCtrl.parent.parent as NavController;
-        this.navParent.setRoot(HomePage);
-        console.log(error);
-      });
   }
 }
