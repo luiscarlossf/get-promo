@@ -29,7 +29,7 @@ export class InitialPage {
   }
   
   cadastrar() {
- 	this.navCtrl.setRoot(CadastroPage);
+ 	this.navCtrl.push(CadastroPage);
   }
 
 }
