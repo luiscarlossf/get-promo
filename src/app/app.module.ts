@@ -19,7 +19,6 @@ import { InitialPageModule } from '../pages/initial/initial.module';
     MyApp,
     HomePage,
     ListPage,
-    //InitialPage,
     ConfigPage
   ],
   imports: [
