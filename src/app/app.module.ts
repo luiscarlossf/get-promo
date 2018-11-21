@@ -12,6 +12,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClientModule } from  '@angular/common/http';
 import { DatabaseProvider } from '../providers/database/database';
 import { UserProvider } from '../providers/user/user';
+import { InitialPageModule } from '../pages/initial/initial.module';
 
 @NgModule({
   declarations: [
@@ -20,13 +21,13 @@ import { UserProvider } from '../providers/user/user';
     ListPage,
     InitialPage,
     ConfigPage
-
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    InitialPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -35,7 +36,6 @@ import { UserProvider } from '../providers/user/user';
     ListPage,
     InitialPage,
     ConfigPage
-
   ],
   providers: [
     StatusBar,
