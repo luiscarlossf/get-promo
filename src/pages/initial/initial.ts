@@ -41,23 +41,24 @@ export class InitialPage {
     // console.log('entrei no Login');
     // console.log(this.emailText);
     this.uProvider.login(this.emailText,this.senhaText).then((result) => {
-      this.data = result;
-      this.navCtrl.setRoot(HomePage);
-    }, (err) => {
-      this.loading.dismiss();
-      this.presentToast(err);
-    });
+      if (result == "OK"){
+        this.loading.dismiss();
+        this.navCtrl.setRoot(HomePage);
+      }else{
+        console.log(result)
+        this.loading.dismiss();
+        this.presentToast(result);
+      }})
   }
   presentToast(msg) {
     let toast = this.toastCtrl.create({
-      message: "E-mail ou Senha incorreto",
+      message: msg,
       duration: 3000,
       position: 'bottom',
       dismissOnPageChange: true
     });
 
     toast.onDidDismiss(() => {
-      console.log('Dismissed toast');
     });
 
     toast.present();

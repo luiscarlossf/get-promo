@@ -26,9 +26,9 @@ export class UserProvider {
     return new Promise((resolve, reject) => {
         // let headers = new Headers();
         // headers.append('Content-Type', 'application/json');
-        this.http.post("http://url:8000/usuario/login/", data)
-          .subscribe(res => {
-            resolve();
+        this.http.post("http://localhost:8080/usuario/login/", data)
+          .subscribe((res: any) => {
+            resolve(res);
           }, (err) => {
             reject(err);
           });
