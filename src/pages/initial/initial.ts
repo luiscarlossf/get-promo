@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+
 import { IonicPage, NavController, NavParams, LoadingController,ToastController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { UserProvider } from '../../providers/user/user';
+
 
 /**
  * Generated class for the InitialPage page.
@@ -11,17 +13,18 @@ import { UserProvider } from '../../providers/user/user';
  */
 
 @IonicPage()
+
 @Component({
   selector: 'page-initial',
   templateUrl: 'initial.html',
 })
 export class InitialPage {
+
   loading: any;
   emailText: string = '';
   senhaText: string = '';
   data: any;
   constructor(public navCtrl: NavController,public toastCtrl: ToastController, public loadingCtrl: LoadingController, public navParams: NavParams, private uProvider: UserProvider){
-
   }
 
   ionViewDidLoad() {
@@ -62,6 +65,7 @@ export class InitialPage {
     });
 
     toast.present();
+
   }
 
 }

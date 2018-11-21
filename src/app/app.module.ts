@@ -7,8 +7,15 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { InitialPage } from '../pages/initial/initial';
 
+import { ConfigPage } from '../pages/config/config';
+
+
+import { SQLite } from '@ionic-native/sqlite';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
+import { HttpClientModule } from  '@angular/common/http';
+import { DatabaseProvider } from '../providers/database/database';
 import { UserProvider } from '../providers/user/user';
 
 @NgModule({
@@ -16,10 +23,13 @@ import { UserProvider } from '../providers/user/user';
     MyApp,
     HomePage,
     ListPage,
-    InitialPage
+    InitialPage,
+    ConfigPage
+
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule
   ],
@@ -28,13 +38,18 @@ import { UserProvider } from '../providers/user/user';
     MyApp,
     HomePage,
     ListPage,
-    InitialPage
+    InitialPage,
+    ConfigPage
+
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    SQLite,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserProvider,
+    DatabaseProvider,
+    UserProvider
+
   ]
 })
 export class AppModule {}
