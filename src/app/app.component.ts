@@ -18,7 +18,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = InitialPage; //Deve ser a tela de login
-  
+
   pages: Array<{title: string, component: any}>;
 
   user: any;

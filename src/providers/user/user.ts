@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+import { SQLiteObject } from '@ionic-native/sqlite';
 import { DatabaseProvider } from '../database/database';
 import { HttpClient } from '@angular/common/http';
-
 import { Usuario } from '../../users/Usuario';
+
 
 /*
   Generated class for the UserProvider provider.
@@ -14,15 +14,32 @@ import { Usuario } from '../../users/Usuario';
 @Injectable()
 export class UserProvider {
 
+
   constructor(private dbProvider: DatabaseProvider, private http: HttpClient) {
     console.log('Hello UserProvider Provider');
   }
-
+  public login(email: string, senha: string){
+    var data = {
+        email: email,
+        senha: senha
+    };
+    return new Promise((resolve, reject) => {
+        // let headers = new Headers();
+        // headers.append('Content-Type', 'application/json');
+        this.http.post("http://localhost:8080/usuario/login/", data)
+          .subscribe((res: any) => {
+            resolve(res);
+          }, (err) => {
+            reject(err);
+          });
+    });
+    // console.log(data);
+  }
   public remove(apelido: string, senha: string){
   	return this.dbProvider.getDB().then((db: SQLiteObject) => {
   	    let sql = 'delete from users where apelido = ? && senha = ?';
   	    let data = [apelido, senha];
-  	    
+
   	    return db.executeSql(sql, data).catch((e) => console.error(e));
   	}).catch((e) => console.error(e));
   }
@@ -37,7 +54,7 @@ export class UserProvider {
         console.log(error);
       });
   }
-   
+
   public get(apelido: string) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
