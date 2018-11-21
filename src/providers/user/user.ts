@@ -1,9 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HomePage } from '../../pages/home/home';
-import { NavController } from 'ionic-angular';
-import { ViewChild } from '@angular/core';
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+import { SQLiteObject } from '@ionic-native/sqlite';
 import { DatabaseProvider } from '../database/database';
 import { HttpClient } from '@angular/common/http';
 import { Usuario } from '../../users/Usuario';
@@ -43,7 +39,7 @@ export class UserProvider {
   	return this.dbProvider.getDB().then((db: SQLiteObject) => {
   	    let sql = 'delete from users where apelido = ? && senha = ?';
   	    let data = [apelido, senha];
-  	    
+
   	    return db.executeSql(sql, data).catch((e) => console.error(e));
   	}).catch((e) => console.error(e));
   }
@@ -58,7 +54,7 @@ export class UserProvider {
         console.log(error);
       });
   }
-   
+
   public get(apelido: string) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
