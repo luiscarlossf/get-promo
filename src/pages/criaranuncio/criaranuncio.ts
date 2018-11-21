@@ -16,9 +16,12 @@ import { Geolocation } from '@ionic-native/geolocation';
 })
 export class CriarAnuncioPage {
 	map:any;
+	categorias: Array<{title:string, component: string}>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation) {
-  	
+  	this.categorias = [{title:"Entretenimento", component: "Entretenimento"}, 
+  	                   {title:"Lazer", component: "Lazer"},
+  	                   {title:"Educação", component: "Educação"}];
   }
 
   ionViewDidLoad() {

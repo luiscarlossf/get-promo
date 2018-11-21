@@ -38,9 +38,9 @@
     <ion-item-divider color="light" id="criarAnNcio-list-item-divider4">
       Categorias do anúncio
     </ion-item-divider>
-    <ion-item id="criarAnNcio-checkbox1" >
+    <ion-item *ngFor="let c of categorias">
       <ion-label>
-        Checkbox
+        {{c.title}}
       </ion-label>
       <ion-checkbox></ion-checkbox>
     </ion-item>
