@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { CriarAnuncioPage } from '../criaranuncio/criaranuncio';
 
 declare var google: any;
 
@@ -44,6 +45,10 @@ export class HomePage {
   
   filtrar(){
    
+  }
+
+  cadastrarAnuncio(){
+    this.navCtrl.push(CriarAnuncioPage);
   }
 
 }
