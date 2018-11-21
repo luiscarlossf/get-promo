@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-declare var google: any;
-
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -10,21 +8,24 @@ declare var google: any;
 export class HomePage {
 
 
-  anuncios: Array<any> = [
+  anuncios = [
     {
       titulo:"Promocao de FastFood",
       descricao :"Venha aproveitar o melhor fastfood da cidade com promocao especial.",
-      src: "assets/imgs/Fast-Food.jpg" 
+      src: "assets/imgs/Fast-Food.jpg",
+      categoria: "alimentos"
     },
     {
       titulo:"Black Friday na PDG",
       descricao :"Aproveite a Black Friday para se livrar do aluguel e compre um imovel com descontos imperdiveis.",
-      src: "assets/imgs/pdg.jpg" 
+      src: "assets/imgs/pdg.jpg",
+      categoria: "imoveis" 
     },
     {
       titulo:"Carros 2015 e na SP Japan",
       descricao :"Precos imperdiveis e condicoes especiais para voce andar de carro novo.",
-      src: "assets/imgs/carros.jpg" 
+      src: "assets/imgs/carros.jpg",
+      categoria: "carros" 
     }
   ]
   
@@ -39,11 +40,55 @@ export class HomePage {
   }]
 
   constructor(public navCtrl: NavController) {
-
+ 
   }
   
-  filtrar(){
+  initializeItems() {
+  this.anuncios = [
+      {
+      titulo:"Promocao de FastFood",
+      descricao :"Venha aproveitar o melhor fastfood da cidade com promocao especial.",
+      src: "assets/imgs/Fast-Food.jpg",
+      categoria: "alimentos"
+    },
+    {
+      titulo:"Black Friday na PDG",
+      descricao :"Aproveite a Black Friday para se livrar do aluguel e compre um imovel com descontos imperdiveis.",
+      src: "assets/imgs/pdg.jpg",
+      categoria: "imoveis" 
+    },
+    {
+      titulo:"Carros 2015 e na SP Japan",
+      descricao :"Precos imperdiveis e condicoes especiais para voce andar de carro novo.",
+      src: "assets/imgs/carros.jpg",
+      categoria: "carros" 
+    }
+  ];
+}
+
+getItems(ev : any) {
+  // Reset items back to all of the items
+  this.initializeItems();
+  // set q to the value of the searchbar
+  var q = ev.target.value;;
+  // if the value is an empty string don't filter the items
+  if (q && q.trim() != '') {
+
+   this.anuncios = this.anuncios.filter((v) => {
+
+    if (v.categoria.toLowerCase().indexOf(q.toLowerCase()) > -1 || v.titulo.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+       return true;
+      }
+
+      return false;
+    })
+  }
+ }
+
+  
+  openCard(item){
    
   }
+  
 
 }

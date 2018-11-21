@@ -13,10 +13,8 @@
     <ion-label floating></ion-label>
     <ion-input type="text"> </ion-input> 
   </ion-item>
-    <button ion-button icon-only (click)="filtrar()"> <ion-icon name= "search" ></ion-icon> </button>
-
-
-  <ion-card *ngFor="let item of anuncios">
+  <ion-searchbar [(ngModel)]="searchQuery" (input)="getItems($event)"></ion-searchbar>
+  <ion-card *ngFor="let item of anuncios" (click)="openCard(item)">
 
     <img src= {{item.src}}/>
 
@@ -32,3 +30,4 @@
   </ion-card>  
 
 </ion-content>
+
