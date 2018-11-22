@@ -13,6 +13,7 @@ import { CriarAnuncioPage } from '../pages/criaranuncio/criaranuncio';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
+import { GoogleMaps } from '@ionic-native/google-maps';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Geolocation
+    Geolocation,
+    GoogleMaps
   ]
 })
 export class AppModule {}
