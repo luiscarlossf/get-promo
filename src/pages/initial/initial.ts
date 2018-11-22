@@ -48,7 +48,10 @@ export class InitialPage {
           apelido: result['apelido'],
           nome: result['nome'],
           email: result['email'],
-          permissao: result['permissao']
+          permissao: result['permissao'],
+          categoria1: result['categoria_favorita1'],
+          categoria2: result['categoria_favorita2'],
+          categoria3: result['categoria_favorita3']
       };
       if (result['email'] == this.emailText){
         console.log(result)
