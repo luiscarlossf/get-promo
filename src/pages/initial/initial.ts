@@ -39,15 +39,22 @@ export class InitialPage {
   }
 
   Login() {
+
     this.showLoader()
     // console.log('entrei no Login');
     // console.log(this.emailText);
     this.uProvider.login(this.emailText,this.senhaText).then((result) => {
-      if (result == "OK"){
-        this.loading.dismiss();
-        this.navCtrl.setRoot(HomePage);
-      }else{
+      var infoUser = {
+          apelido: result['apelido'],
+          nome: result['nome'],
+          email: result['email'],
+          permissao: result['permissao']
+      };
+      if (result['email'] == this.emailText){
         console.log(result)
+        this.loading.dismiss();
+        this.navCtrl.setRoot(HomePage, infoUser);
+      }else{
         this.loading.dismiss();
         this.presentToast(result);
       }})
