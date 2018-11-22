@@ -7,7 +7,9 @@ import { AlertController } from 'ionic-angular';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { InitialPage } from '../pages/initial/initial';
-
+import { ConfigPage } from '../pages/config/config';
+import { DatabaseProvider } from '../providers/database/database';
+import { UserProvider } from '../providers/user/user';
 
 @Component({
   templateUrl: 'app.html'
@@ -15,17 +17,26 @@ import { InitialPage } from '../pages/initial/initial';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = InitialPage;
+  rootPage: any = InitialPage; //Deve ser a tela de login
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private alertCtrl: AlertController) {
+  user: any;
+  config: any;
+
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private alertCtrl: AlertController, private dbProvider: DatabaseProvider, private uProvider: UserProvider) {
+  
     this.initializeApp();
+    this.dbProvider.createDatabase();
+    this.user = this.uProvider.get('lui');
+    this.user.apelido = 'lui'
 
     // used for an example of ngFor and navigation
+
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'List', component: ListPage },
+      { title: 'Configuração', component: ConfigPage}
     ];
 
   }
@@ -48,7 +59,7 @@ export class MyApp {
   presentConfirm() {
     let alert = this.alertCtrl.create({
       title: 'Confirmar logout',
-      message: 'Voc� deseja realmente sair do Get Promo?',
+      message: 'Você deseja realmente sair do Get Promo?',
       buttons: [
         {
           text: 'Cancelar',
@@ -68,5 +79,5 @@ export class MyApp {
     alert.present();
   }
 
-
 }
+
