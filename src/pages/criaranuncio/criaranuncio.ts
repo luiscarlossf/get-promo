@@ -2,6 +2,8 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps, GoogleMap,GoogleMapOptions, Environment, Marker, GoogleMapsEvent, MarkerOptions, LatLng} from '@ionic-native/google-maps';
+import { CategoriasProvider } from '../../providers/categorias/categorias';
+import { Categoria } from '../../users/categoria';
 
 /**
  * Generated class for the CriaranuncioPage page.
@@ -17,17 +19,16 @@ import { GoogleMaps, GoogleMap,GoogleMapOptions, Environment, Marker, GoogleMaps
 export class CriarAnuncioPage {
   @ViewChild('map') mapElement: ElementRef;
 	map:GoogleMap;
-	categorias: Array<{title:string, component: string}>;
+	categorias: Array<Categoria>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, private _googleMaps: GoogleMaps) {
-  	this.categorias = [{title:"Entretenimento", component: "Entretenimento"}, 
-  	                   {title:"Lazer", component: "Lazer"},
-  	                   {title:"Educação", component: "Educação"}];
-
+  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, 
+             private _googleMaps: GoogleMaps, private categoriasPvdr: CategoriasProvider) {
+    this.getCategorias();
   }
 
   ionViewDidLoad() {
      this.loadMap();
+     console.log(this.categorias);
   }
 
   initMap(){
@@ -83,6 +84,18 @@ export class CriarAnuncioPage {
     };
   }
 
+  getCategorias(){
+    this.categorias=[];
+    let categorias_array:any;
+    this.categoriasPvdr.get().then((val)=>{
+      console.log(val);
+      categorias_array = val;
+      for (let categoria of categorias_array) {
+         this.categorias.push(new Categoria(categoria["id_categoria"], categoria["nome_categoria"]));
+         console.log(categoria); // 1, "string", false
+      }
+    });
+  }
   
 
   onMapClick(params: any[]) {
@@ -91,6 +104,6 @@ export class CriarAnuncioPage {
     this.map.addMarkerSync({
       position: latLng
     });
-}
+  }
 
 }
