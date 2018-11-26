@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { InitialPage } from '../initial/initial';
+declare var require:any;
 
 @Component({
   selector: 'page-cadastro',
@@ -24,7 +25,7 @@ export class CadastroPage {
       senha: this.senha,
       email: this.email,
       foto: 'null',
-      permissao: 0
+      permissao: 1
     }).then(function(response){
       console.log(response.data)
     });
