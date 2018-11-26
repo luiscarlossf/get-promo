@@ -16,6 +16,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { CategoriasProvider } from '../providers/categorias/categorias';
+import { AnuncioProvider } from '../providers/anuncio/anuncio';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { CategoriasProvider } from '../providers/categorias/categorias';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Geolocation,
     GoogleMaps,
-    CategoriasProvider
+    CategoriasProvider,
+    AnuncioProvider
   ]
 })
 export class AppModule {}

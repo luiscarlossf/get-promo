@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps, GoogleMap,GoogleMapOptions, Environment, Marker, GoogleMapsEvent, MarkerOptions, LatLng} from '@ionic-native/google-maps';
 import { CategoriasProvider } from '../../providers/categorias/categorias';
+import { AnuncioProvider } from '../../providers/anuncio/anuncio';
 import { Categoria } from '../../users/categoria';
 import { Anuncio } from '../../users/anuncio';
 
@@ -25,8 +26,9 @@ export class CriarAnuncioPage {
   anuncio: Anuncio;
   
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, 
-             private _googleMaps: GoogleMaps, private categoriasPvdr: CategoriasProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+              private geolocation: Geolocation, private _googleMaps: GoogleMaps, 
+              private categoriasPvdr: CategoriasProvider, private anuncioProvider:AnuncioProvider) {
     this.getCategorias();
     this.anuncio = new Anuncio();
   }
@@ -44,6 +46,7 @@ export class CriarAnuncioPage {
   onSubmit(){
     console.log("Envio anuncio-form!");
     console.log(this.anuncio);
+    //this.anuncioProvider.cadastrarAnuncio(this.anuncio);
   }
 
   loadMap() {
