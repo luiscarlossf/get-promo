@@ -21,7 +21,7 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
   
-  usuario: {nome: string, email: string, apelido: string, senha: string, anunciante: int};
+  usuario: {nome: string, email: string, apelido: string, senha: string, anunciante: string};
     
 
   user: any;
@@ -42,7 +42,7 @@ export class MyApp {
       { title: 'Configuração', component: ConfigPage}
     ];
     
-    this.usuario ={nome: 'matheus', email: 'matheus@gmail.com', apelido: 'matheus', senha:'123', anunciante: 1};
+    this.usuario ={nome: 'matheus', email: 'matheus@gmail.com', apelido: 'matheus', senha:'123', anunciante: '1'};
 
   }
 
