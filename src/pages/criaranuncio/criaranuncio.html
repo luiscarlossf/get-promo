@@ -6,50 +6,53 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page1">
-  <ion-list id="criarAnNcio-list1">
-    <ion-item-divider color="light" id="criarAnNcio-list-item-divider1">
-      Informações básicas
-    </ion-item-divider>
-    <ion-item id="criarAnNcio-input4">
-      <ion-label stacked>
-        Descrição:
-      </ion-label>
-      <ion-input type="text" placeholder=""></ion-input>
-    </ion-item>
-    <ion-item-divider color="light" id="criarAnNcio-list-item-divider2">
-      Período de exibição
-    </ion-item-divider>
-    <ion-item id="criarAnNcio-input5">
-      <ion-label>
-        Data de ínicio:
-      </ion-label>
-      <ion-input type="date" placeholder=""></ion-input>
-    </ion-item>
-    <ion-item id="criarAnNcio-input7">
-      <ion-label>
-        Data de término:
-      </ion-label>
-      <ion-input type="date" placeholder=""></ion-input>
-    </ion-item>
-    
-  </ion-list>
-  <div id="criarAnNcio-container1"></div>
-  <ion-list id="criarAnNcio-list2">
-    <ion-item-divider color="light" id="criarAnNcio-list-item-divider4">
-      Categorias do anúncio
-    </ion-item-divider>
-    <ion-item *ngFor="let c of categorias">
-      <ion-label>
-        {{c.nome}}
-      </ion-label>
-      <ion-checkbox></ion-checkbox>
-    </ion-item>
-  </ion-list>
-  <ion-list id="criarAnNcio-list3">
-    <ion-item-divider color="light" id="criarAnNcio-list-item-divider3">
-      Área de atuação
-    </ion-item-divider>
-   </ion-list>
-   <div #map id="map"></div>
-  <button ion-button>Criar Anúncio</button>
+  <form (ngSubmit)="onSubmit(anuncioform)" #anuncioform = "ngForm">
+    <ion-list id="criarAnNcio-list1">
+      <ion-item-divider color="light" id="criarAnNcio-list-item-divider1">
+        Informações básicas
+      </ion-item-divider>
+      <ion-item id="criarAnNcio-input4">
+        <ion-label stacked>
+          Descrição:
+        </ion-label>
+        <ion-input required type="text" [(ngModel)]="anuncio.descricao" name="descricao" placeholder=""></ion-input>
+      </ion-item>
+      <ion-item-divider color="light" id="criarAnNcio-list-item-divider2">
+        Período de exibição
+      </ion-item-divider>
+      <ion-item id="criarAnNcio-input5">
+        <ion-label>
+          Data de ínicio:
+        </ion-label>
+        <ion-input required type="date" [(ngModel)]="anuncio.data_criacao" name="data_criacao" placeholder=""></ion-input>
+      </ion-item>
+      <ion-item  id="criarAnNcio-input7">
+        <ion-label>
+          Data de término:
+        </ion-label>
+        <ion-input required type="date" [(ngModel)]="anuncio.data_expiracao" name="data_expiracao" placeholder=""></ion-input>
+      </ion-item>
+      
+    </ion-list>
+    <div id="criarAnNcio-container1"></div>
+    <ion-list id="criarAnNcio-list2">
+      <ion-item-divider  color="light" id="criarAnNcio-list-item-divider4">
+        Categorias do anúncio
+      </ion-item-divider>
+      <ion-item *ngFor="let c of categorias">
+        <ion-label>
+          {{c.nome}}
+        </ion-label>
+        <ion-checkbox ></ion-checkbox>
+      </ion-item>
+    </ion-list>
+    <ion-list id="criarAnNcio-list3">
+      <ion-item-divider color="light" id="criarAnNcio-list-item-divider3">
+        Área de atuação
+      </ion-item-divider>
+     </ion-list>
+     <div #map id="map"></div>
+    <button ion-button type="submit" [disabled]="!anuncioform.form.valid" block>Criar Anúncio</button>
+  </form>
+
 </ion-content>

@@ -4,6 +4,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps, GoogleMap,GoogleMapOptions, Environment, Marker, GoogleMapsEvent, MarkerOptions, LatLng} from '@ionic-native/google-maps';
 import { CategoriasProvider } from '../../providers/categorias/categorias';
 import { Categoria } from '../../users/categoria';
+import { Anuncio } from '../../users/anuncio';
 
 /**
  * Generated class for the CriaranuncioPage page.
@@ -17,13 +18,17 @@ import { Categoria } from '../../users/categoria';
   templateUrl: 'criaranuncio.html',
 })
 export class CriarAnuncioPage {
+
   @ViewChild('map') mapElement: ElementRef;
 	map:GoogleMap;
 	categorias: Array<Categoria>;
+  anuncio: Anuncio;
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, 
              private _googleMaps: GoogleMaps, private categoriasPvdr: CategoriasProvider) {
     this.getCategorias();
+    this.anuncio = new Anuncio();
   }
 
   ionViewDidLoad() {
@@ -34,6 +39,11 @@ export class CriarAnuncioPage {
   initMap(){
     let element = this.mapElement.nativeElement;
     this.map = this._googleMaps.create(element)
+  }
+
+  onSubmit(){
+    console.log("Envio anuncio-form!");
+    console.log(this.anuncio);
   }
 
   loadMap() {
