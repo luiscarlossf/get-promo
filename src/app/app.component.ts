@@ -8,6 +8,8 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { InitialPage } from '../pages/initial/initial';
 import { ConfigPage } from '../pages/config/config';
+import { ProfilePage } from '../pages/profile/profile';
+import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { DatabaseProvider } from '../providers/database/database';
 import { UserProvider } from '../providers/user/user';
 
@@ -17,7 +19,8 @@ import { UserProvider } from '../providers/user/user';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = InitialPage; //Deve ser a tela de login
+  rootPage: any = ProfilePage;
+  //rootPage: any = InitialPage; //Deve ser a tela de login
 
   pages: Array<{title: string, component: any}>;
 
@@ -35,7 +38,9 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
-      { title: 'Configuração', component: ConfigPage}
+      { title: 'Configuração', component: ConfigPage},
+      { title: 'Perfil', component: ProfilePage},
+      { title: 'EditarPerfil', component: EditProfilePage}
     ];
 
   }

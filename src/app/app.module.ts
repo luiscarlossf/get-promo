@@ -6,6 +6,8 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { InitialPage } from '../pages/initial/initial';
 import { ConfigPage } from '../pages/config/config';
+import { ProfilePage } from '../pages/profile/profile';
+import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { SQLite } from '@ionic-native/sqlite';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -20,7 +22,9 @@ import { InitialPageModule } from '../pages/initial/initial.module';
     HomePage,
     ListPage,
     //InitialPage,
-    ConfigPage
+    ConfigPage,
+    ProfilePage,
+    EditProfilePage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,8 @@ import { InitialPageModule } from '../pages/initial/initial.module';
     HomePage,
     ListPage,
     InitialPage,
-    ConfigPage
+    ConfigPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,

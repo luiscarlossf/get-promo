@@ -1,0 +1,48 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Perfil</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content profile-page>
+
+  <ion-list>
+    <ion-item no-lines>
+      <ion-avatar>
+        <img src="https://assets.adidas.com/images/w_600,f_auto,q_auto/7e188db8ebe14857b199a81a00d1d043_9366/Ultraboost_Uncaged_Shoes_White_DA9157_01_standard.jpg">
+      </ion-avatar>
+
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <ion-label stacked color = "primary"> Apelido </ion-label>
+      <ion-input type="text" value="apelido" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+       <ion-label stacked color="primary">Email</ion-label>
+       <ion-input type="email" value="hi@ionic.io" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+       <ion-label stacked color="primary">Nome</ion-label>
+       <ion-input type="text" value="Nome" readonly></ion-input>
+     </ion-item>
+
+     <ion-item>
+      <ion-label stacked color="primary">Categorias Favoritas</ion-label>
+      <ion-textarea readonly
+        value="Esporte\nEletrônicos\nHigiene">
+      </ion-textarea>
+    </ion-item>
+    </ion-list>
+
+  <button ion-button block color="light" (click) = "editarPerfil()">Editar Perfil</button>
+
+</ion-content>
