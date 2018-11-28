@@ -20,11 +20,15 @@ export class MyApp {
   rootPage: any = InitialPage; //Deve ser a tela de login
 
   pages: Array<{title: string, component: any}>;
+  
+  usuario: {nome: string, email: string, apelido: string, senha: string, anunciante: string};
+    
 
   user: any;
   config: any;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private alertCtrl: AlertController, private dbProvider: DatabaseProvider, private uProvider: UserProvider) {
+  
     this.initializeApp();
     this.dbProvider.createDatabase();
     this.user = this.uProvider.get('lui');
@@ -37,6 +41,8 @@ export class MyApp {
       { title: 'List', component: ListPage },
       { title: 'Configuração', component: ConfigPage}
     ];
+    
+    this.usuario ={nome: 'matheus', email: 'matheus@gmail.com', apelido: 'matheus', senha:'123', anunciante: '1'};
 
   }
 
@@ -54,6 +60,8 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+  
+
 
   presentConfirm() {
     let alert = this.alertCtrl.create({
@@ -78,5 +86,5 @@ export class MyApp {
     alert.present();
   }
 
-
 }
+
