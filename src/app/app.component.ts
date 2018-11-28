@@ -25,6 +25,7 @@ export class MyApp {
   config: any;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private alertCtrl: AlertController, private dbProvider: DatabaseProvider, private uProvider: UserProvider) {
+  
     this.initializeApp();
     this.dbProvider.createDatabase();
     this.user = this.uProvider.get('lui');
@@ -78,5 +79,5 @@ export class MyApp {
     alert.present();
   }
 
-
 }
+

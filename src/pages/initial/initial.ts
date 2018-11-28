@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CadastroPage } from '../cadastro/cadastro';
 import { IonicPage, NavController, NavParams, LoadingController,ToastController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { UserProvider } from '../../providers/user/user';
@@ -24,10 +25,16 @@ export class InitialPage {
   senhaText: string = '';
   data: any;
   constructor(public navCtrl: NavController,public toastCtrl: ToastController, public loadingCtrl: LoadingController, public navParams: NavParams, private uProvider: UserProvider){
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad InitialPage');
+  }
+
+  
+  cadastrar() {
+ 	this.navCtrl.push(CadastroPage);
   }
 
   showLoader(){
