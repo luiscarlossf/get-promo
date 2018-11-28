@@ -41,9 +41,6 @@ export class HomePage {
   lng:-42.797722
   }]
 
-  constructor(public navCtrl: NavController) {
- 
-  }
   
   initializeItems() {
   this.anuncios = [
