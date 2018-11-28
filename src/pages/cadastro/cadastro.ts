@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { InitialPage } from '../initial/initial';
 declare var require:any;
 
+
 @Component({
   selector: 'page-cadastro',
   templateUrl: 'cadastro.html'
@@ -30,5 +31,6 @@ export class CadastroPage {
       console.log(response.data)
     });
       this.navCtrl.setRoot(InitialPage);
+
   }
 }
