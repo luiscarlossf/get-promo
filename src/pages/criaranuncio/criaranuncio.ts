@@ -45,7 +45,7 @@ export class CriarAnuncioPage {
      this.loadMap();
      console.log(this.categorias);
   }
-
+  
   upload(){
     this.fileChooser.open()
        .then(uri => this.imageURI = uri)
@@ -94,11 +94,6 @@ export class CriarAnuncioPage {
     toast.present();
   }
 
-  initMap(){
-    let element = this.mapElement.nativeElement;
-    this.map = this._googleMaps.create(element)
-  }
-
   onSubmit(){
     console.log("Envio anuncio-form!");
     console.log(this.anuncio);
@@ -141,7 +136,7 @@ export class CriarAnuncioPage {
       position:location
     });
     marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-      alert('clicked');
+      marker.remove();
     });
 
     this.map.on(GoogleMapsEvent.MAP_CLICK).subscribe(this.onMapClick.bind(this));
