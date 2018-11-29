@@ -45,13 +45,16 @@ export class CriarAnuncioPage {
      this.loadMap();
      console.log(this.categorias);
   }
-  
+
+
+  //Carrega a imagem selecionada no form
   upload(){
     this.fileChooser.open()
        .then(uri => this.imageURI = uri)
        .catch(e => console.log(e));
   }
-
+  
+  //Faz o upload da imagem para o servidor
   uploadImage(){
     let loader = this.loadingCtrl.create({
       content: "Gerando anúncio..." 
@@ -79,7 +82,8 @@ export class CriarAnuncioPage {
       this.presentToast(err);
     });
   }
-
+  
+  //Pequeno pop up de mensagens
   presentToast(msg) {
     let toast = this.toastCtrl.create({
       message: msg,
@@ -94,13 +98,16 @@ export class CriarAnuncioPage {
     toast.present();
   }
 
+
+  //Submete o formulário de cadastro para o servidor.
   onSubmit(){
     console.log("Envio anuncio-form!");
     console.log(this.anuncio);
     console.log(this.imageURI);
     //this.anuncioProvider.cadastrarAnuncio(this.anuncio);
   }
-
+  
+  //Carrega o mapa no formulário.
   loadMap() {
 
     // This code is necessary for browser
@@ -142,13 +149,7 @@ export class CriarAnuncioPage {
     this.map.on(GoogleMapsEvent.MAP_CLICK).subscribe(this.onMapClick.bind(this));
   }
 
-  createMarker(loc:LatLng, title:string){
-    let markerOPtions: MarkerOptions = {
-      position: loc,
-      title: title
-    };
-  }
-
+  //Recupera as categorias do banco e coloca na lista que será exibida no checkbox
   getCategorias(){
     this.categorias=[];
     let categorias_array:any;
@@ -162,7 +163,7 @@ export class CriarAnuncioPage {
     });
   }
   
-
+  // Instruções são executadas quando o mapa é clicado.
   onMapClick(params: any[]) {
     let latLng: LatLng = params[0];
 
