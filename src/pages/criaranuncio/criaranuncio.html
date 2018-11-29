@@ -47,7 +47,7 @@
         <ion-label>
           {{c.nome}}
         </ion-label>
-        <ion-checkbox ></ion-checkbox>
+        <ion-checkbox [(ngModel)]=c [disabled]="isCheckboxDisabled" (ionChange)="checked(c)"></ion-checkbox>
       </ion-item>
     </ion-list>
     <ion-list id="criarAnNcio-list3">

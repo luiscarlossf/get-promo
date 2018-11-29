@@ -28,7 +28,8 @@ export class CriarAnuncioPage {
   anuncio: Anuncio;
   imageURI: any;
   imageFileName: any;
-  
+  isCheckboxDisabled:boolean=false;
+  checkedCategorias: Array<any> = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
               private geolocation: Geolocation, private _googleMaps: GoogleMaps, 
@@ -44,6 +45,19 @@ export class CriarAnuncioPage {
   ionViewDidLoad() {
      this.loadMap();
      console.log(this.categorias);
+  }
+  
+  checked(categoria) {
+    if (categoria.checked === true) {
+        this.checkedCategorias.push(categoria);
+    } else if (categoria.checked === false) {
+       this.checkedCategorias.splice(this.checkedCategorias.indexOf(categoria), 1);
+    }
+
+    //check for two selected.
+    if(this.checkedCategorias.length===2){
+        this.isCheckboxDisabled=true;
+    } 
   }
 
 
