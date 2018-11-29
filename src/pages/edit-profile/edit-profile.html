@@ -5,14 +5,42 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>editProfile</ion-title>
+    <ion-title>Editar Perfil</ion-title>
   </ion-navbar>
-
 </ion-header>
 
+<ion-content padding edit-profile-page>
+  <ion-list>
+    <ion-item no-lines>
+      <ion-avatar>
+        <img src="https://i.imgur.com/UJX9bnj.jpg">
+      </ion-avatar>
+    </ion-item>
+    <button ion-button block color="light">Editar Foto</button>
+  </ion-list>
 
-<ion-content padding>
+  <ion-list>
+    <ion-item>
+       <ion-label stacked color="primary">Email</ion-label>
+       <ion-input type="email" value="hi@ionic.io"></ion-input>
+    </ion-item>
+    <ion-item>
+       <ion-label stacked color="primary">Nome</ion-label>
+       <ion-input type="text" value={{nome}}></ion-input>
+    </ion-item>
+
+    <ion-list>
+      <ion-label stacked color="primary">Categorias Favoritas</ion-label>
+      <ion-item *ngFor="let item of items; let i = index">
+        <ion-label>{{i}} {{item.name}}</ion-label>
+        <ion-checkbox [(ngModel)]='item.ischecked' center></ion-checkbox>
+      </ion-item>
+    </ion-list>
+
+</ion-list>
+
+
+  <button ion-button block color="light">Salvar</button>
 
 </ion-content>

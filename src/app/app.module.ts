@@ -40,7 +40,8 @@ import { InitialPageModule } from '../pages/initial/initial.module';
     ListPage,
     InitialPage,
     ConfigPage,
-    ProfilePage
+    ProfilePage,
+    EditProfilePage
   ],
   providers: [
     StatusBar,

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { EditProfilePage } from '../edit-profile/edit-profile';
 
 /**
  * Generated class for the ProfilePage page.
@@ -14,8 +15,9 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
   templateUrl: 'profile.html',
 })
 export class ProfilePage {
-
+  
   constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController) {
+
   }
 
   ionViewDidLoad() {
@@ -23,13 +25,14 @@ export class ProfilePage {
   }
 
   editarPerfil(){
-    let toast = this.toastCtrl.create({
-      message: 'oi',
-      duration: 3000,
-      position: 'bottom',
-      dismissOnPageChange: true
+    this.navCtrl.push(EditProfilePage, {
+      apelido: 'rafesley',
+      email: 'eu@icloud.com',
+      nome: 'Wesley',
+      categ1: 'Esporte',
+      categ2: 'Eletronicos',
+      categ3: 'Higiene'
     });
-    toast.present();
   }
 
 }
