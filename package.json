@@ -21,6 +21,9 @@
     "@angular/platform-browser": "5.2.11",
     "@angular/platform-browser-dynamic": "5.2.11",
     "@ionic-native/core": "^4.17.0",
+    "@ionic-native/file": "^4.17.0",
+    "@ionic-native/file-chooser": "^4.17.0",
+    "@ionic-native/file-transfer": "^4.17.0",
     "@ionic-native/geolocation": "^4.17.0",
     "@ionic-native/google-maps": "^4.15.1",
     "@ionic-native/phonegap-local-notification": "^4.17.0",
@@ -65,7 +68,10 @@
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-file": {},
+      "cordova-plugin-file-transfer": {},
+      "cordova-plugin-filechooser": {}
     },
     "platforms": [
       "browser"

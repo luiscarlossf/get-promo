@@ -17,6 +17,9 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { CategoriasProvider } from '../providers/categorias/categorias';
 import { AnuncioProvider } from '../providers/anuncio/anuncio';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+import { FileChooser } from '@ionic-native/file-chooser';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,11 @@ import { AnuncioProvider } from '../providers/anuncio/anuncio';
     Geolocation,
     GoogleMaps,
     CategoriasProvider,
-    AnuncioProvider
+    AnuncioProvider,
+    File,
+    FileChooser,
+    FileTransfer,
+    FileTransferObject
   ]
 })
 export class AppModule {}

@@ -17,6 +17,10 @@
         </ion-label>
         <ion-input required type="text" [(ngModel)]="anuncio.descricao" name="descricao" placeholder=""></ion-input>
       </ion-item>
+      <ion-item>
+        <p>{{imageURI}}</p>
+        <button ion-button color="secondary" (click)="upload()"> Upload</button>
+      </ion-item>
       <ion-item-divider color="light" id="criarAnNcio-list-item-divider2">
         Período de exibição
       </ion-item-divider>

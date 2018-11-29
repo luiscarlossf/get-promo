@@ -1,11 +1,13 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController  } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps, GoogleMap,GoogleMapOptions, Environment, Marker, GoogleMapsEvent, MarkerOptions, LatLng} from '@ionic-native/google-maps';
 import { CategoriasProvider } from '../../providers/categorias/categorias';
 import { AnuncioProvider } from '../../providers/anuncio/anuncio';
 import { Categoria } from '../../users/categoria';
 import { Anuncio } from '../../users/anuncio';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { FileChooser } from '@ionic-native/file-chooser';
 
 /**
  * Generated class for the CriaranuncioPage page.
@@ -24,11 +26,17 @@ export class CriarAnuncioPage {
 	map:GoogleMap;
 	categorias: Array<Categoria>;
   anuncio: Anuncio;
+  imageURI: any;
+  imageFileName: any;
   
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
               private geolocation: Geolocation, private _googleMaps: GoogleMaps, 
-              private categoriasPvdr: CategoriasProvider, private anuncioProvider:AnuncioProvider) {
+              private categoriasPvdr: CategoriasProvider, private anuncioProvider:AnuncioProvider,
+              private transfer: FileTransfer,
+             public loadingCtrl: LoadingController,
+             public toastCtrl: ToastController,
+             public fileChooser: FileChooser) {
     this.getCategorias();
     this.anuncio = new Anuncio();
   }
@@ -36,6 +44,54 @@ export class CriarAnuncioPage {
   ionViewDidLoad() {
      this.loadMap();
      console.log(this.categorias);
+  }
+
+  upload(){
+    this.fileChooser.open()
+       .then(uri => this.imageURI = uri)
+       .catch(e => console.log(e));
+  }
+
+  uploadImage(){
+    let loader = this.loadingCtrl.create({
+      content: "Gerando anúncio..." 
+    });
+    loader.present();
+    const fileTransfer: FileTransferObject = this.transfer.create();
+
+    let options: FileUploadOptions = {
+      fileKey: 'ionicfile',
+      fileName: 'ionicfile',
+      chunkedMode: false,
+      mimeType: "image/jpeg",
+      headers: {}
+    }
+
+    fileTransfer.upload(this.imageURI, 'http://192.168.0.7:8080/api/uploadImage', options)
+      .then((data) => {
+      console.log(data+" Uploaded Successfully");
+      this.imageFileName = "";
+      loader.dismiss();
+      this.presentToast("Image uploaded successfully");
+    }, (err) => {
+      console.log(err);
+      loader.dismiss();
+      this.presentToast(err);
+    });
+  }
+
+  presentToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000,
+      position: 'bottom'
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
   }
 
   initMap(){
@@ -46,6 +102,7 @@ export class CriarAnuncioPage {
   onSubmit(){
     console.log("Envio anuncio-form!");
     console.log(this.anuncio);
+    console.log(this.imageURI);
     //this.anuncioProvider.cadastrarAnuncio(this.anuncio);
   }
 
