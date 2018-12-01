@@ -5,6 +5,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { MenuPage } from '../pages/menu/menu';
 import { InitialPage } from '../pages/initial/initial';
 import { CadastroPage } from '../pages/cadastro/cadastro';
 import { ConfigPage } from '../pages/config/config';
@@ -23,7 +24,8 @@ import { InitialPageModule } from '../pages/initial/initial.module';
     ListPage,
     CadastroPage,
     //InitialPage,
-    ConfigPage
+    ConfigPage,
+    MenuPage
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import { InitialPageModule } from '../pages/initial/initial.module';
     ListPage,
     InitialPage,
     CadastroPage,
-    ConfigPage
+    ConfigPage,
+    MenuPage
   ],
   providers: [
     StatusBar,
