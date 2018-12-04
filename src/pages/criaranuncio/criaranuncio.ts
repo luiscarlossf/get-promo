@@ -24,7 +24,7 @@ export class CriarAnuncioPage {
 
   @ViewChild('map') mapElement: ElementRef;
 	map:GoogleMap;
-	categorias: Array<Categoria>;
+	categorias: Array<any>;
   anuncio: Anuncio;
   imageURI: any;
   imageFileName: any;
@@ -47,17 +47,24 @@ export class CriarAnuncioPage {
      console.log(this.categorias);
   }
   
-  checked(categoria) {
-    if (categoria.checked === true) {
+  updateCheck(categoria) {
+    console.log("Categoria state: ", categoria.checked)
+
+    if (categoria.x == false) {
+        console.log("Categoria state: ", categoria.nome)
         this.checkedCategorias.push(categoria);
-    } else if (categoria.checked === false) {
+        if(this.checkedCategorias.length > 3){
+        categoria.x=false;
+        console.log("Categoria new state: ", categoria.nome);
+       }else{
+         categoria.x=true;
+       } 
+    } else if (categoria.x == true) {
        this.checkedCategorias.splice(this.checkedCategorias.indexOf(categoria), 1);
+       categoria.x = false;
     }
 
     //check for two selected.
-    if(this.checkedCategorias.length===2){
-        this.isCheckboxDisabled=true;
-    } 
   }
 
 
@@ -171,7 +178,7 @@ export class CriarAnuncioPage {
       console.log(val);
       categorias_array = val;
       for (let categoria of categorias_array) {
-         this.categorias.push(new Categoria(categoria["id_categoria"], categoria["nome_categoria"]));
+         this.categorias.push({id: categoria["id_categoria"], nome: categoria["nome_categoria"], x:false});
          console.log(categoria); // 1, "string", false
       }
     });
