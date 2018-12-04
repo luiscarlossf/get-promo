@@ -11,7 +11,6 @@ import { CategoriasProvider } from '../../providers/categorias/categorias';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html',

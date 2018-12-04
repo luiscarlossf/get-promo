@@ -28,7 +28,7 @@ import { CategoriasProvider } from '../providers/categorias/categorias';
     //InitialPage,
     ConfigPage,
     ProfilePage,
-    //EditProfilePage
+    EditProfilePage
   ],
   imports: [
     BrowserModule,
