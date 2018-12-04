@@ -155,6 +155,7 @@ export class CriarAnuncioPage {
     this.geolocation.getCurrentPosition()
       .then((resp) => {
         location = new LatLng(resp.coords.latitude, resp.coords.longitude);
+        console.log("Localização atual: ", location);
       }).catch((error) => {
         console.log('Erro ao recuperar sua posição', error);
       });
@@ -169,16 +170,6 @@ export class CriarAnuncioPage {
 
     let element = this.mapElement.nativeElement;
     this.map = GoogleMaps.create(element, mapOptions);
-
-    let marker: Marker = this.map.addMarkerSync({
-      title: 'Ionic',
-      icon: 'blue',
-      animation: 'DROP',
-      position:location
-    });
-    marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-      marker.remove();
-    });
 
     this.map.on(GoogleMapsEvent.MAP_CLICK).subscribe(this.onMapClick.bind(this));
   }
@@ -200,10 +191,19 @@ export class CriarAnuncioPage {
   // Instruções são executadas quando o mapa é clicado.
   onMapClick(params: any[]) {
     let latLng: LatLng = params[0];
-
-    this.map.addMarkerSync({
+    
+    this.anuncio.latitude = latLng.lat.toString();
+    this.anuncio.longitude = latLng.lng.toString();
+    let marker: Marker = this.map.addMarkerSync({
+      icon: 'blue',
+      animation: 'DROP',
       position: latLng
     });
+
+    marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
+      marker.remove();
+    });
+
   }
 
 }
