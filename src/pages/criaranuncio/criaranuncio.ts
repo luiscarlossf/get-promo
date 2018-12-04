@@ -30,6 +30,7 @@ export class CriarAnuncioPage {
   anuncio: Anuncio;
   photo: any;
   imageFileName: any;
+  loader:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
               private geolocation: Geolocation, private _googleMaps: GoogleMaps, 
@@ -72,10 +73,6 @@ export class CriarAnuncioPage {
   
   //Faz o upload da imagem para o servidor
   uploadImage(){
-    let loader = this.loadingCtrl.create({
-      content: "Gerando anúncio..." 
-    });
-    loader.present();
     const fileTransfer: FileTransferObject = this.transfer.create();
 
     let options: FileUploadOptions = {
@@ -90,11 +87,10 @@ export class CriarAnuncioPage {
       .then((data) => {
       console.log(data+" Uploaded Successfully");
       this.imageFileName = "";
-      loader.dismiss();
       this.presentToast("Image uploaded successfully");
     }, (err) => {
       console.log(err);
-      loader.dismiss();
+      this.loader.dismiss();
       this.presentToast(err);
     });
   }
@@ -117,10 +113,15 @@ export class CriarAnuncioPage {
 
   //Submete o formulário de cadastro para o servidor.
   onSubmit(){
+    this.loader = this.loadingCtrl.create({
+      content: "Gerando anúncio..." 
+    });
+    this.loader.present();
     this.anuncio.apelido_anunciante = this.user.apelido;
     console.log("Envio anuncio-form!");
     console.log(this.anuncio);
     console.log(this.photo);
+    this.loader.dismiss();
     //this.anuncioProvider.cadastrarAnuncio(this.anuncio);
   }
   

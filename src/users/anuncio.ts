@@ -1,4 +1,5 @@
 export class Anuncio {
+	public titulo:string;
 	public descricao:string;
 	public apelido_anunciante: string;
 	public data_criacao:any;
