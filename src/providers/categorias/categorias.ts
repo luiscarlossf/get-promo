@@ -20,7 +20,7 @@ export class CategoriasProvider {
   
   get(){
   	return new Promise((resolve, reject)=>{
-	  	this.http.get("http://localhost:8080/categoria/listarCategorias")
+	  	this.http.get("http://192.168.0.21:8080/categoria/listarCategorias")
 	  	.subscribe(
 	  		(data: Array<Categorias>) => {
 	  			resolve(data);

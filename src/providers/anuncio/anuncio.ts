@@ -16,7 +16,7 @@ export class AnuncioProvider {
   }
 
   cadastrarAnuncio(anuncio: Anuncio){
-  	this.http.post('http://localhost:8080/anuncio/cadastrarAnuncio', anuncio);
+  	this.http.post('http://192.168.0.7:8080/anuncio/cadastrarAnuncio', anuncio);
   }
 
 }

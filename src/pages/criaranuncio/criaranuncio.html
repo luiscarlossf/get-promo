@@ -19,7 +19,7 @@
       </ion-item>
       <ion-item>
         <p>{{imageURI}}</p>
-        <button ion-button color="secondary" (click)="upload()"> Upload</button>
+        <button ion-button color="secondary" (click)="upload()"> Upload </button>
       </ion-item>
       <ion-item-divider color="light" id="criarAnNcio-list-item-divider2">
         Período de exibição
@@ -47,7 +47,7 @@
         <ion-label>
           {{c.nome}}
         </ion-label>
-        <ion-checkbox [(ngModel)]=check [disabled]="isCheckboxDisabled" (ionChange)="checked(c)"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="c.checked" name="c.checked"  checked="{{c.x}}" (ionChange)="updateCheck(c)"></ion-checkbox>
       </ion-item>
     </ion-list>
     <ion-list id="criarAnNcio-list3">
@@ -56,7 +56,6 @@
       </ion-item-divider>
      </ion-list>
      <div #map id="map"></div>
-    <button ion-button type="submit" [disabled]="!anuncioform.form.valid" block>Criar Anúncio</button>
+     <button ion-button type="submit" [disabled]="!anuncioform.form.valid" block>Criar Anúncio</button>
   </form>
-
 </ion-content>
