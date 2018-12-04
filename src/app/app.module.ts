@@ -20,6 +20,8 @@ import { AnuncioProvider } from '../providers/anuncio/anuncio';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { FileChooser } from '@ionic-native/file-chooser';
+import { Camera } from '@ionic-native/camera';
+
 
 @NgModule({
   declarations: [
@@ -55,7 +57,8 @@ import { FileChooser } from '@ionic-native/file-chooser';
     File,
     FileChooser,
     FileTransfer,
-    FileTransferObject
+    FileTransferObject,
+    Camera
   ]
 })
 export class AppModule {}

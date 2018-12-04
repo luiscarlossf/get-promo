@@ -8,6 +8,7 @@ import { Categoria } from '../../users/categoria';
 import { Anuncio } from '../../users/anuncio';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { FileChooser } from '@ionic-native/file-chooser';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 /**
  * Generated class for the CriaranuncioPage page.
@@ -26,7 +27,7 @@ export class CriarAnuncioPage {
 	map:GoogleMap;
 	categorias: Array<any>;
   anuncio: Anuncio;
-  imageURI: any;
+  photo: any;
   imageFileName: any;
   isCheckboxDisabled:boolean=false;
   checkedCategorias: Array<any> = [];
@@ -37,7 +38,8 @@ export class CriarAnuncioPage {
               private transfer: FileTransfer,
              public loadingCtrl: LoadingController,
              public toastCtrl: ToastController,
-             public fileChooser: FileChooser) {
+             public fileChooser: FileChooser,
+             private camera: Camera) {
     this.getCategorias();
     this.anuncio = new Anuncio();
   }
@@ -48,20 +50,19 @@ export class CriarAnuncioPage {
   }
   
   updateCheck(categoria) {
-    console.log("Categoria state: ", categoria.checked)
 
     if (categoria.x == false) {
         console.log("Categoria state: ", categoria.nome)
         this.checkedCategorias.push(categoria);
         if(this.checkedCategorias.length > 3){
-        categoria.x=false;
-        console.log("Categoria new state: ", categoria.nome);
-       }else{
-         categoria.x=true;
+          categoria.x=false;
+          console.log("Categoria new state: ", categoria.nome);
+        }else{
+          categoria.x=true;
        } 
     } else if (categoria.x == true) {
-       this.checkedCategorias.splice(this.checkedCategorias.indexOf(categoria), 1);
-       categoria.x = false;
+      this.checkedCategorias.splice(this.checkedCategorias.indexOf(categoria), 1);
+      categoria.x = false;
     }
 
     //check for two selected.
@@ -69,10 +70,22 @@ export class CriarAnuncioPage {
 
 
   //Carrega a imagem selecionada no form
-  upload(){
-    this.fileChooser.open()
-       .then(uri => this.imageURI = uri)
-       .catch(e => console.log(e));
+  getImage(){
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      saveToPhotoAlbum:false
+    }
+    this.camera.getPicture(options).then((imageData) => {
+     // imageData is either a base64 encoded string or a file URI
+     // If it's base64 (DATA_URL):
+     this.photo = 'data:image/jpeg;base64,' + imageData;
+    }, (err) => {
+     // Handle error
+    });
   }
   
   //Faz o upload da imagem para o servidor
@@ -91,7 +104,7 @@ export class CriarAnuncioPage {
       headers: {}
     }
 
-    fileTransfer.upload(this.imageURI, 'http://192.168.0.7:8080/api/uploadImage', options)
+    fileTransfer.upload(this.photo, 'http://192.168.0.7:8080/api/uploadImage', options)
       .then((data) => {
       console.log(data+" Uploaded Successfully");
       this.imageFileName = "";
@@ -124,7 +137,7 @@ export class CriarAnuncioPage {
   onSubmit(){
     console.log("Envio anuncio-form!");
     console.log(this.anuncio);
-    console.log(this.imageURI);
+    console.log(this.photo);
     //this.anuncioProvider.cadastrarAnuncio(this.anuncio);
   }
   

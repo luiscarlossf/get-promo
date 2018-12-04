@@ -18,8 +18,8 @@
         <ion-input required type="text" [(ngModel)]="anuncio.descricao" name="descricao" placeholder=""></ion-input>
       </ion-item>
       <ion-item>
-        <p>{{imageURI}}</p>
-        <button ion-button color="secondary" (click)="upload()"> Upload </button>
+        <p align="center"> <img src="{{photo}}"></p>
+        <button ion-button color="secondary" (click)="getImage()"> Upload de imagem </button>
       </ion-item>
       <ion-item-divider color="light" id="criarAnNcio-list-item-divider2">
         Período de exibição
