@@ -38,7 +38,7 @@ export class InitialPage {
   }
   
   cadastrar() {
- 	this.navCtrl.push(CadastroPage);
+ 	  this.navCtrl.push(CadastroPage);
   }
 
 }

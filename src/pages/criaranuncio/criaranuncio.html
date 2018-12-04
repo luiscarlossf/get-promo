@@ -39,7 +39,7 @@
       
     </ion-list>
     <div id="criarAnNcio-container1"></div>
-    <ion-list id="criarAnNcio-list2">
+    <ion-list radio-group id="criarAnNcio-list2" [(ngModel)]="anuncio.id_categoria" name="categoria">
       <ion-item-divider  color="light" id="criarAnNcio-list-item-divider4">
         Categorias do anúncio
       </ion-item-divider>
@@ -47,7 +47,7 @@
         <ion-label>
           {{c.nome}}
         </ion-label>
-        <ion-checkbox [(ngModel)]="c.checked" name="c.checked"  checked="{{c.x}}" (ionChange)="updateCheck(c)"></ion-checkbox>
+        <ion-radio value="{{c.id}}"></ion-radio>
       </ion-item>
     </ion-list>
     <ion-list id="criarAnNcio-list3">

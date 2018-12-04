@@ -30,8 +30,6 @@ export class CriarAnuncioPage {
   anuncio: Anuncio;
   photo: any;
   imageFileName: any;
-  isCheckboxDisabled:boolean=false;
-  checkedCategorias: Array<any> = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
               private geolocation: Geolocation, private _googleMaps: GoogleMaps, 
@@ -50,25 +48,6 @@ export class CriarAnuncioPage {
   ionViewDidLoad() {
      this.loadMap();
      console.log(this.categorias);
-  }
-  
-  updateCheck(categoria) {
-
-    if (categoria.x == false) {
-        console.log("Categoria state: ", categoria.nome)
-        this.checkedCategorias.push(categoria);
-        if(this.checkedCategorias.length > 3){
-          categoria.x=false;
-          console.log("Categoria new state: ", categoria.nome);
-        }else{
-          categoria.x=true;
-       } 
-    } else if (categoria.x == true) {
-      this.checkedCategorias.splice(this.checkedCategorias.indexOf(categoria), 1);
-      categoria.x = false;
-    }
-
-    //check for two selected.
   }
 
 
@@ -138,6 +117,7 @@ export class CriarAnuncioPage {
 
   //Submete o formulário de cadastro para o servidor.
   onSubmit(){
+    this.anuncio.apelido_anunciante = this.user.apelido;
     console.log("Envio anuncio-form!");
     console.log(this.anuncio);
     console.log(this.photo);
@@ -185,7 +165,7 @@ export class CriarAnuncioPage {
       console.log(val);
       categorias_array = val;
       for (let categoria of categorias_array) {
-         this.categorias.push({id: categoria["id_categoria"], nome: categoria["nome_categoria"], x:false});
+         this.categorias.push({id: categoria["id_categoria"], nome: categoria["nome_categoria"]});
          console.log(categoria); // 1, "string", false
       }
     });

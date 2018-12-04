@@ -5,5 +5,6 @@ export class Anuncio {
 	public data_expiracao:any;
 	public latitude: string;
 	public longitude:string;
+	public id_categoria:number;
 	public foto:any;
 }
