@@ -15,8 +15,15 @@ export class AnuncioProvider {
     console.log('Hello AnuncioProvider Provider');
   }
 
-  cadastrarAnuncio(anuncio: Anuncio){
-  	this.http.post('http://localhost:8080/anuncio/cadastrarAnuncio', anuncio);
+  cadastrarAnuncio(anuncio: Anuncio, loader){
+  	this.http.post('http://localhost:8080/anuncio/cadastrarAnuncio', anuncio)
+  	.subscribe(
+  		(data)=>{
+  			loader.dismiss();
+  		},(error)=>{
+  			loader.dismiss();
+  		});
+  	
   }
 
 }

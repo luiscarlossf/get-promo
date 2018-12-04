@@ -83,7 +83,7 @@ export class CriarAnuncioPage {
       headers: {}
     }
 
-    fileTransfer.upload(this.photo, 'http://192.168.0.7:8080/api/uploadImage', options)
+    fileTransfer.upload(this.photo, 'http://localhost:8080/api/uploadImage', options)
       .then((data) => {
       console.log(data+" Uploaded Successfully");
       this.imageFileName = "";
@@ -119,9 +119,9 @@ export class CriarAnuncioPage {
     this.loader.present();
     this.anuncio.apelido_anunciante = this.user.apelido;
     console.log("Envio anuncio-form!");
+    this.uploadImage();
     console.log(this.anuncio);
-    console.log(this.photo);
-    this.loader.dismiss();
+    this.anuncioProvider.cadastrarAnuncio(this.anuncio, this.loader);
     //this.anuncioProvider.cadastrarAnuncio(this.anuncio);
   }
   
