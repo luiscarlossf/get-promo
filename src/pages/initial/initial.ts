@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CadastroPage } from '../cadastro/cadastro';
 import { IonicPage, NavController, NavParams, LoadingController,ToastController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { UserProvider } from '../../providers/user/user';
@@ -24,10 +25,16 @@ export class InitialPage {
   senhaText: string = '';
   data: any;
   constructor(public navCtrl: NavController,public toastCtrl: ToastController, public loadingCtrl: LoadingController, public navParams: NavParams, private uProvider: UserProvider){
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad InitialPage');
+  }
+
+  
+  cadastrar() {
+ 	this.navCtrl.push(CadastroPage);
   }
 
   showLoader(){
@@ -39,15 +46,25 @@ export class InitialPage {
   }
 
   Login() {
+
     this.showLoader()
     // console.log('entrei no Login');
     // console.log(this.emailText);
     this.uProvider.login(this.emailText,this.senhaText).then((result) => {
-      if (result == "OK"){
-        this.loading.dismiss();
-        this.navCtrl.setRoot(HomePage);
-      }else{
+      var infoUser = {
+          apelido: result['apelido'],
+          nome: result['nome'],
+          email: result['email'],
+          permissao: result['permissao'],
+          categoria1: result['categoria_favorita1'],
+          categoria2: result['categoria_favorita2'],
+          categoria3: result['categoria_favorita3']
+      };
+      if (result['email'] == this.emailText){
         console.log(result)
+        this.loading.dismiss();
+        this.navCtrl.setRoot(HomePage, infoUser);
+      }else{
         this.loading.dismiss();
         this.presentToast(result);
       }})

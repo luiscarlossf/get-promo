@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { InitialPage } from '../pages/initial/initial';
+import { CadastroPage } from '../pages/cadastro/cadastro';
 import { ConfigPage } from '../pages/config/config';
 import { ProfilePage } from '../pages/profile/profile';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
@@ -22,6 +24,7 @@ import { CategoriasProvider } from '../providers/categorias/categorias';
     MyApp,
     HomePage,
     ListPage,
+    CadastroPage,
     //InitialPage,
     ConfigPage,
     ProfilePage,
@@ -42,7 +45,8 @@ import { CategoriasProvider } from '../providers/categorias/categorias';
     InitialPage,
     ConfigPage,
     ProfilePage,
-    EditProfilePage
+    EditProfilePage,
+    CadastroPage,
   ],
   providers: [
     StatusBar,
