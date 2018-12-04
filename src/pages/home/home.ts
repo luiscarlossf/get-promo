@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { CriarAnuncioPage } from '../criaranuncio/criaranuncio';
 
 declare var google: any;
@@ -9,6 +9,8 @@ declare var google: any;
   templateUrl: 'home.html'
 })
 export class HomePage {
+
+  user:any;
 
 
   anuncios: Array<any> = [
@@ -39,8 +41,9 @@ export class HomePage {
   lng:-42.797722
   }]
 
-  constructor(public navCtrl: NavController) {
-
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.navParams.get('infoUser');
+    this.user = this.navParams.data;
   }
   
   filtrar(){
@@ -48,7 +51,7 @@ export class HomePage {
   }
 
   cadastrarAnuncio(){
-    this.navCtrl.push(CriarAnuncioPage);
+    this.navCtrl.push(CriarAnuncioPage, this.user);
   }
 
 }

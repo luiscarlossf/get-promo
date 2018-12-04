@@ -24,6 +24,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 export class CriarAnuncioPage {
 
   @ViewChild('map') mapElement: ElementRef;
+  user: any;
 	map:GoogleMap;
 	categorias: Array<any>;
   anuncio: Anuncio;
@@ -41,6 +42,8 @@ export class CriarAnuncioPage {
              public fileChooser: FileChooser,
              private camera: Camera) {
     this.getCategorias();
+    this.navParams.get('this.user');
+    this.user = this.navParams.data;
     this.anuncio = new Anuncio();
   }
 
