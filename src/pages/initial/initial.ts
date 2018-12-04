@@ -25,7 +25,16 @@ export class InitialPage {
   }
 
   buttonPressed() {
- 	this.navCtrl.setRoot(HomePage);
+   var infoUser = {
+        apelido: 'lui',
+        nome: 'Luis Carlos',
+        email: 'luiscarlos.sf@outlook.com',
+        permissao: 2,
+        categoria1: 1,
+        categoria2: 2,
+        categoria3: 3
+    };
+ 	  this.navCtrl.setRoot(HomePage, infoUser);
   }
   
   cadastrar() {
