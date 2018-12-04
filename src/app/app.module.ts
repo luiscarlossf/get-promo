@@ -15,6 +15,7 @@ import { HttpClientModule } from  '@angular/common/http';
 import { DatabaseProvider } from '../providers/database/database';
 import { UserProvider } from '../providers/user/user';
 import { InitialPageModule } from '../pages/initial/initial.module';
+import { CategoriasProvider } from '../providers/categorias/categorias';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { InitialPageModule } from '../pages/initial/initial.module';
     SQLite,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DatabaseProvider,
-    UserProvider
+    UserProvider,
+    CategoriasProvider
 
   ]
 })

@@ -17,31 +17,55 @@
       <ion-avatar>
         <img src="https://i.imgur.com/UJX9bnj.jpg">
       </ion-avatar>
-
     </ion-item>
   </ion-list>
 
   <ion-list>
     <ion-item>
       <ion-label stacked color = "primary"> Apelido </ion-label>
-      <ion-input type="text" value="apelido" readonly></ion-input>
+      <ion-input type="text" value="{{apelido}}" readonly></ion-input>
     </ion-item>
     <ion-item>
        <ion-label stacked color="primary">Email</ion-label>
-       <ion-input type="email" value="hi@ionic.io" readonly></ion-input>
+       <ion-input type="email" value="{{email}}" readonly></ion-input>
     </ion-item>
     <ion-item>
        <ion-label stacked color="primary">Nome</ion-label>
-       <ion-input type="text" value="Nome" readonly></ion-input>
-     </ion-item>
+       <ion-input type="text" value="{{nome}}" readonly></ion-input>
+    </ion-item>
 
-     <ion-item>
+    <ion-list>
       <ion-label stacked color="primary">Categorias Favoritas</ion-label>
-      <ion-textarea readonly
-        value="Esporte\nEletrônicos\nHigiene">
+      <ion-item>
+        <ion-label>Categoria Favorita 1</ion-label>
+          <ion-select [(ngModel)]="fav1" okText="Ok" cancelText="Cancelar" disabled = "disabledSelector">
+            <ion-option *ngFor="let categoria of categorias let i=index" value = "{{categoria.id}}" selected = "{{(i == fav1).toString()}}">{{categoria.nome}}</ion-option>
+          </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Categoria Favorita 2</ion-label>
+          <ion-select [(ngModel)]="fav2" okText="Ok" cancelText="Cancelar" disabled = "disabledSelector">
+            <ion-option *ngFor="let categoria of categorias let i=index" value = "{{categoria.id}}" selected = "{{(i == fav2).toString()}}">{{categoria.nome}}</ion-option>
+          </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Categoria Favorita 3</ion-label>
+          <ion-select [(ngModel)]="fav3" okText="Ok" cancelText="Cancelar" disabled = "disabledSelector">
+            <ion-option *ngFor="let categoria of categorias let i = index" value = "{{categoria.id}}" selected = "{{(i == fav3).toString()}}">{{categoria.nome}}</ion-option>
+          </ion-select>
+      </ion-item>
+    </ion-list>
+
+  </ion-list>
+
+  <!--<ion-item>
+      <ion-label stacked color="primary">Categorias Favoritas</ion-label>
+      <ion-textarea [(ngModel)] = "favoritas" value="{{favoritas}}" readonly>
       </ion-textarea>
     </ion-item>
-    </ion-list>
+  </ion-list>-->
 
   <button ion-button block color="light" (click) = "editarPerfil()">Editar Perfil</button>
 
