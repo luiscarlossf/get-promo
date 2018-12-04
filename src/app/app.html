@@ -5,7 +5,7 @@
     </ion-toolbar>
   </ion-header>
 <script type="text/javascript">
-  var anunciante = false; 
+  var anunciante = false;
 </script>
   <ion-content>
     <ion-list>
@@ -15,11 +15,16 @@
       <button menuClose ion-item >
         Perfil
       </button >
-       <div *ngIf="usuario.anunciante == '2'">
+       <div *ngIf="usuario['permissao'] == '2'">
          <button menuClose ion-item>
           Cadastrar Anuncio
          </button >
       </div>
+      <div *ngIf="usuario['permissao'] == '1'">
+        <button menuClose ion-item (click)="cadInteresse()">
+         Cadastrar Interesse
+        </button >
+     </div>
       <button menuClose ion-item (click)="presentConfirm()">
         Sair
       </button >

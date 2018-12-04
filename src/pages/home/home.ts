@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { MenuPage } from '../menu/menu';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -55,22 +54,6 @@ export class HomePage {
     this.categoria3 = navParams.get('categoria3');
   }
 
-  ionViewWillEnter() {
-      if (this.permisao == 1) {
-        this.pages = [
-          { title: 'Admin Dashboard', page: 'AdminPage', icon: 'home' },
-          { title: 'Admin Second Page', page: 'AdminSecondPage', icon: 'planet' }
-        ];
-
-      }if (this.permisao == 2)  {
-        this.pages = [
-          { title: 'User Dashboard', page: 'UserPage', icon: 'home' },
-          { title: 'User Second Page', page: 'UserSecondPage', icon: 'planet' }
-        ];
-
-      }
-
-  }
 
   initializeItems() {
   this.anuncios = [

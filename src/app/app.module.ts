@@ -1,11 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-
+import { CadintePage } from '../pages/cadinte/cadinte';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { MenuPage } from '../pages/menu/menu';
 import { InitialPage } from '../pages/initial/initial';
 import { CadastroPage } from '../pages/cadastro/cadastro';
 import { ConfigPage } from '../pages/config/config';
@@ -16,6 +15,7 @@ import { HttpClientModule } from  '@angular/common/http';
 import { DatabaseProvider } from '../providers/database/database';
 import { UserProvider } from '../providers/user/user';
 import { InitialPageModule } from '../pages/initial/initial.module';
+import { CadinteProvider } from '../providers/cadinte/cadinte';
 
 @NgModule({
   declarations: [
@@ -23,9 +23,8 @@ import { InitialPageModule } from '../pages/initial/initial.module';
     HomePage,
     ListPage,
     CadastroPage,
-    //InitialPage,
     ConfigPage,
-    MenuPage
+    CadintePage,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +41,8 @@ import { InitialPageModule } from '../pages/initial/initial.module';
     InitialPage,
     CadastroPage,
     ConfigPage,
-    MenuPage
+    CadintePage
+
   ],
   providers: [
     StatusBar,
@@ -50,7 +50,8 @@ import { InitialPageModule } from '../pages/initial/initial.module';
     SQLite,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DatabaseProvider,
-    UserProvider
+    UserProvider,
+    CadinteProvider
 
   ]
 })

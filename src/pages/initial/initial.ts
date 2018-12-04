@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CadastroPage } from '../cadastro/cadastro';
-import { IonicPage, NavController, NavParams, LoadingController,ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController,ToastController, Events } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { UserProvider } from '../../providers/user/user';
 
@@ -24,7 +24,7 @@ export class InitialPage {
   emailText: string = '';
   senhaText: string = '';
   data: any;
-  constructor(public navCtrl: NavController,public toastCtrl: ToastController, public loadingCtrl: LoadingController, public navParams: NavParams, private uProvider: UserProvider){
+  constructor(public event: Events,public navCtrl: NavController,public toastCtrl: ToastController, public loadingCtrl: LoadingController, public navParams: NavParams, private uProvider: UserProvider){
 
   }
 
@@ -32,7 +32,7 @@ export class InitialPage {
     console.log('ionViewDidLoad InitialPage');
   }
 
-  
+
   cadastrar() {
  	this.navCtrl.push(CadastroPage);
   }
@@ -61,6 +61,7 @@ export class InitialPage {
           categoria3: result['categoria_favorita3']
       };
       if (result['email'] == this.emailText){
+        this.event.publish("userloggedin", infoUser);
         console.log(result)
         this.loading.dismiss();
         this.navCtrl.setRoot(HomePage, infoUser);
@@ -69,6 +70,8 @@ export class InitialPage {
         this.presentToast(result);
       }})
   }
+
+
   presentToast(msg) {
     let toast = this.toastCtrl.create({
       message: msg,
