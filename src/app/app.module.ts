@@ -25,7 +25,6 @@ import { CadinteProvider } from '../providers/cadinte/cadinte';
     ListPage,
     CadastroPage,
     ConfigPage,
-    //CadintePage,
   ],
   imports: [
     BrowserModule,
