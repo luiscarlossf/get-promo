@@ -62,7 +62,7 @@ export class InitialPage {
       };
       if (result['email'] == this.emailText){
         this.event.publish("userloggedin", infoUser);
-        console.log(result)
+        // console.log(result)
         this.loading.dismiss();
         this.navCtrl.setRoot(HomePage, infoUser);
       }else{
