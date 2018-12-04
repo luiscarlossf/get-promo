@@ -15,6 +15,7 @@ import { HttpClientModule } from  '@angular/common/http';
 import { DatabaseProvider } from '../providers/database/database';
 import { UserProvider } from '../providers/user/user';
 import { InitialPageModule } from '../pages/initial/initial.module';
+import { CadintePageModule } from '../pages/cadinte/cadinte.module';
 import { CadinteProvider } from '../providers/cadinte/cadinte';
 
 @NgModule({
@@ -31,7 +32,8 @@ import { CadinteProvider } from '../providers/cadinte/cadinte';
     HttpClientModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
-    InitialPageModule
+    InitialPageModule,
+    CadintePageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
