@@ -1,12 +1,17 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-
+import { NavController, NavParams } from 'ionic-angular';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-
+  apelido: any;
+  nome: any;
+  email: any;
+  permissao: any;
+  categoria1: any;
+  categoria2: any;
+  categoria3: any;
 
   anuncios = [
     {
@@ -19,16 +24,16 @@ export class HomePage {
       titulo:"Black Friday na PDG",
       descricao :"Aproveite a Black Friday para se livrar do aluguel e compre um imovel com descontos imperdiveis.",
       src: "assets/imgs/pdg.jpg",
-      categoria: "imoveis" 
+      categoria: "imoveis"
     },
     {
       titulo:"Carros 2015 e na SP Japan",
       descricao :"Precos imperdiveis e condicoes especiais para voce andar de carro novo.",
       src: "assets/imgs/carros.jpg",
-      categoria: "carros" 
+      categoria: "carros"
     }
   ]
-  
+
   estabelecimentos = [{
   nome: 'Estabelecimento1',
   lat:-5.083974,
@@ -39,10 +44,17 @@ export class HomePage {
   lng:-42.797722
   }]
 
-  constructor(public navCtrl: NavController) {
- 
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.apelido = navParams.get('apelido');
+    this.nome = navParams.get('nome');
+    this.email = navParams.get('email');
+    this.permissao = navParams.get('permissao');
+    this.categoria1 = navParams.get('categoria1');
+    this.categoria2 = navParams.get('categoria2');
+    this.categoria3 = navParams.get('categoria3');
   }
-  
+
+
   initializeItems() {
   this.anuncios = [
       {
@@ -55,13 +67,13 @@ export class HomePage {
       titulo:"Black Friday na PDG",
       descricao :"Aproveite a Black Friday para se livrar do aluguel e compre um imovel com descontos imperdiveis.",
       src: "assets/imgs/pdg.jpg",
-      categoria: "imoveis" 
+      categoria: "imoveis"
     },
     {
       titulo:"Carros 2015 e na SP Japan",
       descricao :"Precos imperdiveis e condicoes especiais para voce andar de carro novo.",
       src: "assets/imgs/carros.jpg",
-      categoria: "carros" 
+      categoria: "carros"
     }
   ];
 }
@@ -85,10 +97,10 @@ getItems(ev : any) {
   }
  }
 
-  
+
   openCard(item){
-   
+
   }
-  
+
 
 }

@@ -1,11 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AlertController } from 'ionic-angular';
-
+import { CadintePage } from '../pages/cadinte/cadinte';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+
 import { InitialPage } from '../pages/initial/initial';
 import { ConfigPage } from '../pages/config/config';
 import { DatabaseProvider } from '../providers/database/database';
@@ -20,15 +21,36 @@ export class MyApp {
   rootPage: any = InitialPage; //Deve ser a tela de login
 
   pages: Array<{title: string, component: any}>;
-  
-  usuario: {nome: string, email: string, apelido: string, senha: string, anunciante: string};
-    
+
+  usuario: {
+    apelido: any,
+    nome: any,
+    email: any,
+    permissao: any,
+    senha: any,
+    categoria1: any,
+    categoria2: any,
+    categoria3: any
+  };
+
 
   user: any;
   config: any;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private alertCtrl: AlertController, private dbProvider: DatabaseProvider, private uProvider: UserProvider) {
-  
+  constructor(public event: Events,public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private alertCtrl: AlertController, private dbProvider: DatabaseProvider, private uProvider: UserProvider) {
+    this.event.subscribe("userloggedin", (user) => {
+        this.usuario = user;
+    });
+    this.usuario = {
+      apelido: '',
+      nome: '',
+      email: '',
+      permissao: '',
+      senha: '',
+      categoria1: '',
+      categoria2: '',
+      categoria3: ''
+    };
     this.initializeApp();
     this.dbProvider.createDatabase();
     this.user = this.uProvider.get('lui');
@@ -41,8 +63,7 @@ export class MyApp {
       { title: 'List', component: ListPage },
       { title: 'Configuração', component: ConfigPage}
     ];
-    
-    this.usuario ={nome: 'matheus', email: 'matheus@gmail.com', apelido: 'matheus', senha:'123', anunciante: '1'};
+
 
   }
 
@@ -60,8 +81,10 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
-  
 
+ cadInteresse(){
+   this.nav.push(CadintePage);
+ }
 
   presentConfirm() {
     let alert = this.alertCtrl.create({
@@ -87,4 +110,3 @@ export class MyApp {
   }
 
 }
-

@@ -6,12 +6,21 @@
     <ion-title>Feed de Anuncios</ion-title>
   </ion-navbar>
 </ion-header>
+<ion-content>
+   <ion-list>
+     <button ion-item detail-none block menuClose *ngFor="let p of pages" (click)="openPage(p.page)">
+       <ion-icon item-start [name]="p.icon"></ion-icon>
+       {{ p.title }}
+     </button>
+   </ion-list>
+
+ </ion-content>
 
 <ion-content padding>
 
   <ion-item>
     <ion-label floating></ion-label>
-    <ion-input type="text"> </ion-input> 
+    <ion-input type="text"> </ion-input>
   </ion-item>
   <ion-searchbar [(ngModel)]="searchQuery" (input)="getItems($event)"></ion-searchbar>
   <ion-card *ngFor="let item of anuncios" (click)="openCard(item)">
@@ -27,7 +36,6 @@
       </p>
     </ion-card-content>
 
-  </ion-card>  
+  </ion-card>
 
 </ion-content>
-
