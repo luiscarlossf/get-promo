@@ -16,7 +16,6 @@ import { UserProvider } from '../../providers/user/user';
   templateUrl: 'edit-profile.html',
 })
 export class EditProfilePage {
-  callback = null;
   data = null;
   categorias = [];
   apelido = null;
@@ -54,9 +53,6 @@ export class EditProfilePage {
         this.fav3 = i;
       }
     }
-
-    this.callback = this.navParams.get('callback');
-    this.data = this.navParams.get('data') || [];
 
   }
 
@@ -97,9 +93,11 @@ export class EditProfilePage {
           this.presentSaveAlert();
         });
       }
-      this.parent.setData(this.apelido, this.email,this.nome,this.fav1,this.fav2,this.fav3);
-      this.navCtrl.pop();
+
+
     }
+    this.parent.setData(this.email,this.nome,this.fav1,this.fav2,this.fav3);
+    this.navCtrl.pop();
   }
 
   presentSaveAlert() {

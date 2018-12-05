@@ -69,6 +69,14 @@ export class MyApp {
 
   }
 
+  setData(email: string, nome: string, fav1: number, fav2: number, fav3: number){
+    this.usuario.email = email;
+    this.usuario.nome = nome;
+    this.usuario.categoria1 = fav1;
+    this.usuario.categoria2 = fav2;
+    this.usuario.categoria3 = fav3;
+  }
+
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -81,7 +89,10 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+    this.nav.setRoot(page.component,{
+      parentPage: this,
+      usuario: this.usuario
+    });
   }
 
  cadInteresse(){

@@ -17,12 +17,9 @@ import { HttpClientModule } from  '@angular/common/http';
 import { DatabaseProvider } from '../providers/database/database';
 import { UserProvider } from '../providers/user/user';
 import { InitialPageModule } from '../pages/initial/initial.module';
-<<<<<<< HEAD
 import { CategoriasProvider } from '../providers/categorias/categorias';
-=======
 import { CadintePageModule } from '../pages/cadinte/cadinte.module';
 import { CadinteProvider } from '../providers/cadinte/cadinte';
->>>>>>> dev
 
 @NgModule({
   declarations: [
@@ -30,14 +27,9 @@ import { CadinteProvider } from '../providers/cadinte/cadinte';
     HomePage,
     ListPage,
     CadastroPage,
-<<<<<<< HEAD
-    //InitialPage,
     ConfigPage,
     ProfilePage,
     EditProfilePage
-=======
-    ConfigPage,
->>>>>>> dev
   ],
   imports: [
     BrowserModule,
@@ -57,12 +49,7 @@ import { CadinteProvider } from '../providers/cadinte/cadinte';
     ProfilePage,
     EditProfilePage,
     CadastroPage,
-<<<<<<< HEAD
-=======
-    ConfigPage,
     CadintePage
-
->>>>>>> dev
   ],
   providers: [
     StatusBar,
@@ -71,12 +58,8 @@ import { CadinteProvider } from '../providers/cadinte/cadinte';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DatabaseProvider,
     UserProvider,
-<<<<<<< HEAD
-    CategoriasProvider
-=======
+    CategoriasProvider,
     CadinteProvider
->>>>>>> dev
-
   ]
 })
 export class AppModule {}

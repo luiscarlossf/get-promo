@@ -31,21 +31,19 @@ export class ProfilePage {
 
   disabledSelector: boolean;
 
-
   constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, private categoriasPvdr: CategoriasProvider) {
     this.getCategorias();
     //setar parametros aqui
-    this.fav1 = 1;
-    this.fav2 = 2;
-    this.fav3 = 3;
-
-    this.apelido = 'teste';
-    this.email = 'teste@';
-    this.nome = 'teste';
+    this.parent = navParams.get('parentPage');
+    this.apelido = navParams.get('usuario').apelido;
+    this.nome = navParams.get('usuario').nome;
+    this.email = navParams.get('usuario').email;
+    this.fav1 = navParams.get('usuario').categoria1;
+    this.fav2 = navParams.get('usuario').categoria2;
+    this.fav3 = navParams.get('usuario').categoria3;
     //////////////////////
     this.disabledSelector = true;
 
-  //  this.favoritas = this.getFavoritas();
 
   }
 
@@ -61,8 +59,7 @@ export class ProfilePage {
     });
   }
 
-  setData(apelido: string, email: string, nome: string, fav1: number, fav2: number, fav3: number){
-    this.apelido = apelido;
+  setData(email: string, nome: string, fav1: number, fav2: number, fav3: number){
     this.email = email;
     this.nome = nome;
     this.fav1 = fav1;
@@ -85,5 +82,9 @@ export class ProfilePage {
       parentPage: this,
       data: data
     });
+  }
+
+  ionViewWillLeave(){
+    this.parent.setData(this.email,this.nome,this.fav1,this.fav2,this.fav3);
   }
 }

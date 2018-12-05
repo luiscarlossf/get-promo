@@ -7,17 +7,17 @@
 <ion-content padding>
 
   <ion-list>
-  
+
   <ion-item>
     <ion-label stacked>Nome</ion-label>
     <ion-input [(ngModel)]="nome" type="text" placeholder="nome"></ion-input>
   </ion-item>
-  
+
   <ion-item>
     <ion-label stacked>Email</ion-label>
     <ion-input [(ngModel)]="email" type="email"  placeholder="email"></ion-input>
   </ion-item>
-  
+
   <ion-item>
     <ion-label stacked>Username</ion-label>
     <ion-input [(ngModel)]="apelido" type="text" placeholder="apelido"></ion-input>
@@ -27,6 +27,21 @@
     <ion-label stacked>Password</ion-label>
     <ion-input [(ngModel)]="senha" type="password" placeholder="senha"></ion-input>
   </ion-item>
+
+  <ion-list radio-group [(ngModel)]="permissao">
+
+    <ion-label stacked>Tipo</ion-label>
+    <ion-item>
+      <ion-label>Usuário Comum</ion-label>
+      <ion-radio value=1></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Anunciante</ion-label>
+      <ion-radio value=2></ion-radio>
+    </ion-item>
+
+  </ion-list>
 
 </ion-list>
 
