@@ -13,6 +13,7 @@ import { UserProvider } from '../../providers/user/user';
  */
 
 
+
 @Component({
   selector: 'page-initial',
   templateUrl: 'initial.html',
@@ -30,6 +31,7 @@ export class InitialPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad InitialPage');
   }
+
 
   cadastrar() {
  	  this.navCtrl.push(CadastroPage);
