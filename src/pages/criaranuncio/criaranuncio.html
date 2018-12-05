@@ -6,6 +6,10 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page1">
+
+  <button ion-button color="secondary" (click)="getImage()"> Selecionar de imagem </button>
+  <p align="center"> <img src="{{photo}}"></p>
+  
   <form (ngSubmit)="onSubmit(anuncioform)" #anuncioform = "ngForm">
     <ion-list id="criarAnNcio-list1">
       <ion-item-divider color="light" id="criarAnNcio-list-item-divider1">
@@ -22,10 +26,6 @@
           Descrição:
         </ion-label>
         <ion-input required type="text" [(ngModel)]="anuncio.descricao" name="descricao" placeholder=""></ion-input>
-      </ion-item>
-      <ion-item>
-        <p align="center"> <img src="{{photo}}"></p>
-        <button ion-button color="secondary" (click)="getImage()"> Upload de imagem </button>
       </ion-item>
       <ion-item-divider color="light" id="criarAnNcio-list-item-divider2">
         Período de exibição

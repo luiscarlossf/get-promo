@@ -9,6 +9,7 @@ import { Anuncio } from '../../users/anuncio';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { HomePage } from '../home/home';
 
 
 /**
@@ -68,11 +69,22 @@ export class CriarAnuncioPage {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64 (DATA_URL):
      this.photo = 'data:image/jpeg;base64,' + imageData;
-     this.pathimage = normalizeURL(imageData);
-     console.log(this.pathimage);
+     this.pathimage = imageData;
     }, (err) => {
      // Handle error
     });
+  }
+
+  //Submete o formulário de cadastro para o servidor.
+  onSubmit(){
+    this.loader = this.loadingCtrl.create({
+      content: "Gerando anúncio..." 
+    });
+    this.loader.present();
+    this.anuncio.apelido_anunciante = this.user.apelido;
+    this.uploadImage();
+    this.anuncioProvider.cadastrarAnuncio(this.anuncio, this.loader);
+    this.navCtrl.setRoot(HomePage);
   }
   
   //Faz o upload da imagem para o servidor
@@ -81,19 +93,20 @@ export class CriarAnuncioPage {
 
     let options: FileUploadOptions = {
       fileKey: 'image',
-      fileName: 'ionicfile',
+      fileName: this.anuncio.titulo+'.jpeg',
       chunkedMode: false,
       mimeType: 'multipart/form-data',
-      params: {'tipo': 'anuncio', 'apelido': 'luis'}
+      httpMethod: 'POST',
+      params: {'tipo': 'anuncio', 'apelido': 'luis'} 
     };
 
-    fileTransfer.upload(this.pathimage, 'http://localhost:8080/uploads/realizarUpload', options)
+    fileTransfer.upload(this.pathimage, encodeURI('http://localhost:8080/uploads/realizarUpload'), options)
       .then(response => {
-      console.log(response+" Uploaded Successfully");
+      console.log(" Uploaded Successfully");
       this.imageFileName = "";
       this.presentToast("Image uploaded successfully");
     }, err => {
-      console.log("Deu problema no Upload");
+      console.log("Erro na trasnferências");
       console.log(err);
       this.loader.dismiss();
       this.presentToast(err);
@@ -104,7 +117,7 @@ export class CriarAnuncioPage {
   presentToast(msg) {
     let toast = this.toastCtrl.create({
       message: msg,
-      duration: 3000,
+      duration: 10000,
       position: 'bottom'
     });
 
@@ -113,21 +126,6 @@ export class CriarAnuncioPage {
     });
 
     toast.present();
-  }
-
-
-  //Submete o formulário de cadastro para o servidor.
-  onSubmit(){
-    this.loader = this.loadingCtrl.create({
-      content: "Gerando anúncio..." 
-    });
-    this.loader.present();
-    this.anuncio.apelido_anunciante = this.user.apelido;
-    console.log("Envio anuncio-form!");
-    this.uploadImage();
-    console.log(this.anuncio);
-    //this.anuncioProvider.cadastrarAnuncio(this.anuncio, this.loader);
-    //this.anuncioProvider.cadastrarAnuncio(this.anuncio);
   }
   
   //Carrega o mapa no formulário.
