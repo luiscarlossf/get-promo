@@ -9,7 +9,6 @@ import { ListPage } from '../pages/list/list';
 import { InitialPage } from '../pages/initial/initial';
 import { ConfigPage } from '../pages/config/config';
 import { ProfilePage } from '../pages/profile/profile';
-import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { DatabaseProvider } from '../providers/database/database';
 import { UserProvider } from '../providers/user/user';
 
@@ -43,7 +42,6 @@ export class MyApp {
       { title: 'List', component: ListPage },
       { title: 'Configuração', component: ConfigPage},
       { title: 'Perfil', component: ProfilePage},
-      { title: 'EditarPerfil', component: EditProfilePage}
     ];
 
     this.usuario ={nome: 'matheus', email: 'matheus@gmail.com', apelido: 'matheus', senha:'123', anunciante: '1'};

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 import { Categoria } from '../../users/categoria';
 import { CategoriasProvider } from '../../providers/categorias/categorias';
 import { UserProvider } from '../../providers/user/user';
