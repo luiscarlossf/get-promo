@@ -5,7 +5,7 @@ export class Anunciante extends Usuario{
     //adicionar anúncios depois
 
     constructor(nome: string, apelido: string, email: string, senha:string, interesses: number[], categorias: number[]) {
-        super(nome,apelido,email, senha)
+        super(nome,apelido,email, senha,categorias)
         this.categorias = categorias
     }
 

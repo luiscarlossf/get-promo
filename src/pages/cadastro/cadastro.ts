@@ -13,20 +13,21 @@ export class CadastroPage {
   email : string;
   apelido : string;
   senha : string;
+  permissao: number;
   constructor(public navCtrl: NavController) {
 
   }
-  
+
   cadastrar() {
     var axios = require('axios');
-    console.log('in'); 
+    console.log('in');
     axios.post('http://localhost:8080/usuario/cadastrarUsuario', {
       apelido: this.apelido,
       nome: this.nome,
       senha: this.senha,
       email: this.email,
       foto: 'null',
-      permissao: 1
+      permissao: this.permissao
     }).then(function(response){
       console.log(response.data)
     });

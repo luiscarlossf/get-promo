@@ -9,6 +9,7 @@ import { ListPage } from '../pages/list/list';
 
 import { InitialPage } from '../pages/initial/initial';
 import { ConfigPage } from '../pages/config/config';
+import { ProfilePage } from '../pages/profile/profile';
 import { DatabaseProvider } from '../providers/database/database';
 import { UserProvider } from '../providers/user/user';
 
@@ -61,10 +62,19 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
-      { title: 'Configuração', component: ConfigPage}
+      { title: 'Configuração', component: ConfigPage},
+      { title: 'Perfil', component: ProfilePage},
     ];
 
 
+  }
+
+  setData(email: string, nome: string, fav1: number, fav2: number, fav3: number){
+    this.usuario.email = email;
+    this.usuario.nome = nome;
+    this.usuario.categoria1 = fav1;
+    this.usuario.categoria2 = fav2;
+    this.usuario.categoria3 = fav3;
   }
 
   initializeApp() {
@@ -79,7 +89,10 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+    this.nav.setRoot(page.component,{
+      parentPage: this,
+      usuario: this.usuario
+    });
   }
 
  cadInteresse(){
