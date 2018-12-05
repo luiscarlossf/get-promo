@@ -16,8 +16,6 @@ export class CategoriasProvider {
     console.log('Hello CategoriasProvider Provider');
   }
 
-
-  
   get(){
   	return new Promise((resolve, reject)=>{
 	  	this.http.get("http://localhost:8080/categoria/listarCategorias")
@@ -31,7 +29,7 @@ export class CategoriasProvider {
 	           reject(error);
 	    });
    });
-    
+
   }
 
   getCategorias(){
