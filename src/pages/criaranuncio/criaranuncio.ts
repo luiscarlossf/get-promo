@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ToastController  } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController, normalizeURL} from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps, GoogleMap,GoogleMapOptions, Environment, Marker, GoogleMapsEvent, MarkerOptions, LatLng} from '@ionic-native/google-maps';
 import { CategoriasProvider } from '../../providers/categorias/categorias';
@@ -9,6 +9,7 @@ import { Anuncio } from '../../users/anuncio';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+
 
 /**
  * Generated class for the CriaranuncioPage page.
@@ -29,6 +30,7 @@ export class CriarAnuncioPage {
 	categorias: Array<any>;
   anuncio: Anuncio;
   photo: any;
+  pathimage: any;
   imageFileName: any;
   loader:any;
 
@@ -66,6 +68,8 @@ export class CriarAnuncioPage {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64 (DATA_URL):
      this.photo = 'data:image/jpeg;base64,' + imageData;
+     this.pathimage = normalizeURL(imageData);
+     console.log(this.pathimage);
     }, (err) => {
      // Handle error
     });
@@ -76,19 +80,20 @@ export class CriarAnuncioPage {
     const fileTransfer: FileTransferObject = this.transfer.create();
 
     let options: FileUploadOptions = {
-      fileKey: 'ionicfile',
+      fileKey: 'image',
       fileName: 'ionicfile',
       chunkedMode: false,
-      mimeType: "image/jpeg",
-      headers: {}
-    }
+      mimeType: 'multipart/form-data',
+      params: {'tipo': 'anuncio', 'apelido': 'luis'}
+    };
 
-    fileTransfer.upload(this.photo, 'http://localhost:8080/api/uploadImage', options)
-      .then((data) => {
-      console.log(data+" Uploaded Successfully");
+    fileTransfer.upload(this.pathimage, 'http://localhost:8080/uploads/realizarUpload', options)
+      .then(response => {
+      console.log(response+" Uploaded Successfully");
       this.imageFileName = "";
       this.presentToast("Image uploaded successfully");
-    }, (err) => {
+    }, err => {
+      console.log("Deu problema no Upload");
       console.log(err);
       this.loader.dismiss();
       this.presentToast(err);
@@ -121,7 +126,7 @@ export class CriarAnuncioPage {
     console.log("Envio anuncio-form!");
     this.uploadImage();
     console.log(this.anuncio);
-    this.anuncioProvider.cadastrarAnuncio(this.anuncio, this.loader);
+    //this.anuncioProvider.cadastrarAnuncio(this.anuncio, this.loader);
     //this.anuncioProvider.cadastrarAnuncio(this.anuncio);
   }
   

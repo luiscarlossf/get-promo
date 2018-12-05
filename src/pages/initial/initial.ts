@@ -26,9 +26,9 @@ export class InitialPage {
 
   buttonPressed() {
    var infoUser = {
-        apelido: 'lui',
+        apelido: 'luis',
         nome: 'Luis Carlos',
-        email: 'luiscarlos.sf@outlook.com',
+        email: 'luis@outlook.com',
         permissao: 2,
         categoria1: 1,
         categoria2: 2,
