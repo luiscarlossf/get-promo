@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-
+import { CadintePage } from '../pages/cadinte/cadinte';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
@@ -17,7 +17,12 @@ import { HttpClientModule } from  '@angular/common/http';
 import { DatabaseProvider } from '../providers/database/database';
 import { UserProvider } from '../providers/user/user';
 import { InitialPageModule } from '../pages/initial/initial.module';
+<<<<<<< HEAD
 import { CategoriasProvider } from '../providers/categorias/categorias';
+=======
+import { CadintePageModule } from '../pages/cadinte/cadinte.module';
+import { CadinteProvider } from '../providers/cadinte/cadinte';
+>>>>>>> dev
 
 @NgModule({
   declarations: [
@@ -25,17 +30,22 @@ import { CategoriasProvider } from '../providers/categorias/categorias';
     HomePage,
     ListPage,
     CadastroPage,
+<<<<<<< HEAD
     //InitialPage,
     ConfigPage,
     ProfilePage,
     EditProfilePage
+=======
+    ConfigPage,
+>>>>>>> dev
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
-    InitialPageModule
+    InitialPageModule,
+    CadintePageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -47,6 +57,12 @@ import { CategoriasProvider } from '../providers/categorias/categorias';
     ProfilePage,
     EditProfilePage,
     CadastroPage,
+<<<<<<< HEAD
+=======
+    ConfigPage,
+    CadintePage
+
+>>>>>>> dev
   ],
   providers: [
     StatusBar,
@@ -55,7 +71,11 @@ import { CategoriasProvider } from '../providers/categorias/categorias';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DatabaseProvider,
     UserProvider,
+<<<<<<< HEAD
     CategoriasProvider
+=======
+    CadinteProvider
+>>>>>>> dev
 
   ]
 })
