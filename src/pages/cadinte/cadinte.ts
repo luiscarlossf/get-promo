@@ -9,6 +9,7 @@ import { HomePage } from '../home/home';
  * Ionic pages and navigation.
  */
 
+
 @Component({
   selector: 'page-cadinte',
   templateUrl: 'cadinte.html',

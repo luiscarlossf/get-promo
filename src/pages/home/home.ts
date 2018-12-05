@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { CriarAnuncioPage } from '../criaranuncio/criaranuncio';
 
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -99,10 +100,19 @@ getItems(ev : any) {
 
   openCard(item){
 
+   this.anuncios = this.anuncios.filter((v) => {
+
+    if (v.categoria.toLowerCase().indexOf(q.toLowerCase()) > -1 || v.titulo.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+       return true;
+      }
+
+      return false;
+    })
   }
   
   cadastrarAnuncio(){
     this.navCtrl.push(CriarAnuncioPage, this.user);
   }
+
 
 }

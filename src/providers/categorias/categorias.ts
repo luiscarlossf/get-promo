@@ -40,7 +40,6 @@ export class CategoriasProvider {
   		for (let categoria of this.categorias_array) {
     	categorias.push(new Categoria(categoria["id_categoria"], categoria["nome_categoria"]));
     	console.log(categoria); // 1, "string", false
-	 
 		}
 	    return categorias;
   	});
