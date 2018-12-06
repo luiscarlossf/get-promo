@@ -45,10 +45,10 @@ export class UserProvider {
   	}).catch((e) => console.error(e));
   }
 
-  public delete_user(apelido: string){
+  public delete_user(apelido_: string){
     console.log('Deletendo');
 
-    this.http.delete("http://192.168.0.21:8080/usuario/deleteUsuario/"+apelido)
+    this.http.delete("http://192.168.0.21:8080/usuario/deleteUsuario/", , {params:{apelido:apelido}})
       .subscribe(data => {
         console.log(data);
        }, error => {
