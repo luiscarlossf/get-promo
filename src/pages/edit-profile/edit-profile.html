@@ -1,0 +1,61 @@
+<!--
+  Generated template for the EditProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Editar Perfil</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding edit-profile-page>
+  <ion-list>
+    <ion-item no-lines>
+      <ion-avatar>
+        <img src="https://i.imgur.com/UJX9bnj.jpg">
+      </ion-avatar>
+    </ion-item>
+  <!--  <button ion-button block color="light">Editar Foto</button>-->
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+       <ion-label stacked color="primary">Email</ion-label>
+       <ion-input [(ngModel)]="email" type="email" value={{email}} (input) = 'onEmailChange()'></ion-input>
+    </ion-item>
+    <ion-item>
+       <ion-label stacked color="primary">Nome</ion-label>
+       <ion-input [(ngModel)]= "nome" type="text" value={{nome}} (input) = 'onNomeChange()'></ion-input>
+    </ion-item>
+
+  <ion-list>
+    <ion-label stacked color="primary">Categorias Favoritas</ion-label>
+    <ion-item>
+      <ion-label>Categoria Favorita 1</ion-label>
+        <ion-select [(ngModel)]="fav1" okText="Ok" cancelText="Cancelar" [disabled] = "disableSelector" (ionChange) = 'onfav1Change'>
+          <ion-option *ngFor="let categoria of categorias let i=index" value = "{{categoria.id}}" selected = "{{(i == fav1).toString()}}">{{categoria.nome}}</ion-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Categoria Favorita 2</ion-label>
+        <ion-select [(ngModel)]="fav2" okText="Ok" cancelText="Cancelar" (ionChange) = 'onfav2Change'>
+          <ion-option *ngFor="let categoria of categorias let i=index" value = "{{categoria.id}}" selected = "{{(i == fav2).toString()}}">{{categoria.nome}}</ion-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Categoria Favorita 3</ion-label>
+        <ion-select [(ngModel)]="fav3" okText="Ok" cancelText="Cancelar" (ionChange) = 'onfav3Change'>
+          <ion-option *ngFor="let categoria of categorias let i = index" value = "{{categoria.id}}" selected = "{{(i == fav3).toString()}}">{{categoria.nome}}</ion-option>
+        </ion-select>
+    </ion-item>
+  </ion-list>
+
+</ion-list>
+
+<button ion-button block color="light" (click) = "salvarDados()">Salvar</button>
+
+</ion-content>
