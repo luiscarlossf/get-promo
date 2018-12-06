@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
-<<<<<<< HEAD
 import { NavController, NavParams } from 'ionic-angular';
 
 import { CriarAnuncioPage } from '../criaranuncio/criaranuncio';
 
-=======
-import { NavController } from 'ionic-angular';
->>>>>>> master
 
 @Component({
   selector: 'page-home',
@@ -53,14 +49,9 @@ export class HomePage {
   lng:-42.797722
   }]
 
-<<<<<<< HEAD
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.navParams.get('infoUser');
     this.user = this.navParams.data;
-=======
-  constructor(public navCtrl: NavController) {
-
->>>>>>> master
   }
 
 
