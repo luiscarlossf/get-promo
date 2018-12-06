@@ -48,7 +48,7 @@ export class UserProvider {
   public delete_user(apelido_: string){
     console.log('Deletendo');
 
-    this.http.delete("http://192.168.0.21:8080/usuario/deleteUsuario/", {params:{apelido:apelido}})
+    this.http.delete("http://192.168.0.21:8080/usuario/deleteUsuario/", {params:{apelido:apelido_}})
       .subscribe(data => {
         console.log(data);
        }, error => {
