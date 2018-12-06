@@ -13,6 +13,8 @@ export class ConfigPage {
   user: Usuario
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private uProvider: UserProvider) {
      console.log('Criando ConfigPage');
+     this.navParams.get('this.usuario');
+     this.user = this.navParams.data;
   }
 
   ionViewDidLoad() {
@@ -34,7 +36,7 @@ export class ConfigPage {
         {
           text: 'Sim',
           handler: () => {
-            this.uProvider.delete_user('lui');
+            this.uProvider.delete_user(this.user.apelido);
             this.navCtrl.setRoot(InitialPage);
           }
         }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { CadinteProvider } from '../../providers/cadinte/cadinte';
 import { HomePage } from '../home/home';
 /**
@@ -9,7 +9,7 @@ import { HomePage } from '../home/home';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-cadinte',
   templateUrl: 'cadinte.html',

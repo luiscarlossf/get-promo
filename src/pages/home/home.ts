@@ -1,17 +1,22 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+
+import { CriarAnuncioPage } from '../criaranuncio/criaranuncio';
+
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  apelido: any;
-  nome: any;
-  email: any;
-  permissao: any;
-  categoria1: any;
-  categoria2: any;
-  categoria3: any;
+  user: { apelido: any,
+          nome: any,
+          email: any,
+          permissao: any,
+          categoria1: any,
+          categoria2: any,
+          categoria3: any
+        };
 
   anuncios = [
     {
@@ -45,13 +50,8 @@ export class HomePage {
   }]
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.apelido = navParams.get('apelido');
-    this.nome = navParams.get('nome');
-    this.email = navParams.get('email');
-    this.permissao = navParams.get('permissao');
-    this.categoria1 = navParams.get('categoria1');
-    this.categoria2 = navParams.get('categoria2');
-    this.categoria3 = navParams.get('categoria3');
+    this.navParams.get('infoUser');
+    this.user = this.navParams.data;
   }
 
 
@@ -97,9 +97,8 @@ getItems(ev : any) {
   }
  }
 
-
-  openCard(item){
-
+  cadastrarAnuncio(){
+    this.navCtrl.push(CriarAnuncioPage, this.user);
   }
 
 

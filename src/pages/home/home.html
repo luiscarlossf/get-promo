@@ -37,5 +37,10 @@
     </ion-card-content>
 
   </ion-card>
+  <div *ngIf="user.permissao == '2'">
+    <ion-fab bottom right >
+      <button ion-fab color="danger" (click)="cadastrarAnuncio()"><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
+  </div>
 
 </ion-content>

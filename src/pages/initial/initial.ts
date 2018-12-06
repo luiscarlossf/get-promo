@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CadastroPage } from '../cadastro/cadastro';
-import { IonicPage, NavController, NavParams, LoadingController,ToastController, Events } from 'ionic-angular';
+import { NavController, NavParams, LoadingController,ToastController, Events } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { UserProvider } from '../../providers/user/user';
 
@@ -12,7 +12,7 @@ import { UserProvider } from '../../providers/user/user';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 
 @Component({
   selector: 'page-initial',
@@ -34,7 +34,7 @@ export class InitialPage {
 
 
   cadastrar() {
- 	this.navCtrl.push(CadastroPage);
+ 	  this.navCtrl.push(CadastroPage);
   }
 
   showLoader(){
