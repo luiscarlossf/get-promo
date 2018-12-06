@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+<<<<<<< HEAD
 import { AlertController } from 'ionic-angular';
 import { CadintePage } from '../pages/cadinte/cadinte';
 import { HomePage } from '../pages/home/home';
@@ -12,6 +13,11 @@ import { ConfigPage } from '../pages/config/config';
 import { ProfilePage } from '../pages/profile/profile';
 import { DatabaseProvider } from '../providers/database/database';
 import { UserProvider } from '../providers/user/user';
+=======
+
+import { HomePage } from '../pages/home/home';
+import { ListPage } from '../pages/list/list';
+>>>>>>> master
 
 @Component({
   templateUrl: 'app.html'
@@ -19,10 +25,11 @@ import { UserProvider } from '../providers/user/user';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = InitialPage; //Deve ser a tela de login
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 
+<<<<<<< HEAD
   usuario: {
     apelido: any,
     nome: any,
@@ -54,13 +61,20 @@ export class MyApp {
     };
     this.initializeApp();
     this.dbProvider.createDatabase();
+=======
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+    this.initializeApp();
+>>>>>>> master
 
     // used for an example of ngFor and navigation
-
     this.pages = [
       { title: 'Home', component: HomePage },
+<<<<<<< HEAD
       { title: 'List', component: ListPage },
       { title: 'Perfil', component: ProfilePage},
+=======
+      { title: 'List', component: ListPage }
+>>>>>>> master
     ];
 
 
@@ -95,6 +109,7 @@ export class MyApp {
   openConfig(){
     this.nav.push(ConfigPage, this.usuario);
   }
+<<<<<<< HEAD
 
  cadInteresse(){
    this.nav.push(CadintePage);
@@ -123,4 +138,6 @@ export class MyApp {
     alert.present();
   }
 
+=======
+>>>>>>> master
 }
