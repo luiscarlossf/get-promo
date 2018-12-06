@@ -54,15 +54,12 @@ export class MyApp {
     };
     this.initializeApp();
     this.dbProvider.createDatabase();
-    this.user = this.uProvider.get('lui');
-    this.user.apelido = 'lui'
 
     // used for an example of ngFor and navigation
 
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
-      { title: 'Configuração', component: ConfigPage},
       { title: 'Perfil', component: ProfilePage},
     ];
 
@@ -93,6 +90,10 @@ export class MyApp {
       parentPage: this,
       usuario: this.usuario
     });
+  }
+
+  openConfig(){
+    this.nav.push(ConfigPage, this.usuario);
   }
 
  cadInteresse(){

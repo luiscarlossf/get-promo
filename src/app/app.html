@@ -12,6 +12,10 @@
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>
+      <button menuClose ion-item (click)="openConfig()">
+        Configuração
+      </button >
+
       <div *ngIf="usuario['permissao'] == '2'">
         <button menuClose ion-item (click)="cadInteresse()">
          Cadastrar Interesse
