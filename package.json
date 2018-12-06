@@ -30,7 +30,6 @@
     "@ionic-native/http": "^4.17.0",
     "@ionic-native/phonegap-local-notification": "^4.17.0",
     "@ionic-native/splash-screen": "~4.15.0",
-    "@ionic-native/sqlite": "^4.16.0",
     "@ionic-native/status-bar": "~4.15.0",
     "@ionic/storage": "2.2.0",
     "axios": "^0.18.0",

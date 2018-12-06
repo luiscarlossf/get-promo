@@ -19,7 +19,7 @@ import { UserProvider } from '../providers/user/user';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = InitialPage; //Deve ser a tela de login
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -56,7 +56,6 @@ export class MyApp {
     this.dbProvider.createDatabase();
 
     // used for an example of ngFor and navigation
-
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },

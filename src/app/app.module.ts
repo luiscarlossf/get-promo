@@ -39,7 +39,7 @@ import { CadinteProvider } from '../providers/cadinte/cadinte';
     ListPage,
     InitialPage,
     CadastroPage,
-    CriarAnuncioPage, 
+    CriarAnuncioPage,
     ConfigPage,
     ProfilePage,
     EditProfilePage,
