@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SQLiteObject } from '@ionic-native/sqlite';
 import { DatabaseProvider } from '../database/database';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from '../../users/Usuario';
 
 
@@ -45,10 +45,15 @@ export class UserProvider {
   	}).catch((e) => console.error(e));
   }
 
-  public delete_user(apelido_: string){
+  public delete_user(apelido: string){
     console.log('Deletendo');
+    const options = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }), 
+      body: {apelido:apelido},
+      params: {apelido:apelido}
+    };
 
-    this.http.delete("http://localhost:8080/usuario/deleteUsuario/", {params:{apelido:apelido_}})
+    this.http.delete("http://localhost:8080/usuario/deleteUsuario/", options)
       .subscribe(data => {
         console.log(data);
        }, error => {
