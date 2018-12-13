@@ -7,6 +7,9 @@ branches:
     - uc_4_testing
 
 before_script:
+  - git clone https://github.com/wesleyrf10/servidor-get-promo
+  - cd servidor-get-promo & npm install & npm start 
+  - cd ..
   - npm install
 
 script:
