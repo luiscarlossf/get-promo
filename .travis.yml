@@ -3,7 +3,7 @@ node_js:
   - "8.14.0"
   
 addons:
-  firefox: "49.0"
+  chrome: stable
 
 branches:
   only:
