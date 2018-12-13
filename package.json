@@ -9,7 +9,20 @@
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint"
+    "test": "jest"
   },
+  "jest": {
+   "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+   },
+   "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+   "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json"
+   ]
+  }
   "dependencies": {
     "@angular/animations": "5.2.11",
     "@angular/common": "5.2.11",
@@ -61,7 +74,11 @@
   "devDependencies": {
     "@ionic/app-scripts": "3.2.1",
     "@ionic/lab": "1.0.14",
+    "@types/jest": "^23.3.10",
     "@types/node": "^10.12.10",
+    "jest": "^23.6.0",
+    "reflect-metadata": "^0.1.12",
+    "ts-jest": "^23.10.5",
     "typescript": "~2.6.2"
   },
   "description": "An Ionic project",

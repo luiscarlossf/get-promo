@@ -4,7 +4,7 @@
     "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    
+    "skipLibCheck" : true,
     "lib": [
       "dom",
       "es2015"
@@ -20,7 +20,9 @@
   "exclude": [
     "node_modules",
     "src/**/*.spec.ts",
-    "src/**/__tests__/*.ts"
+    "src/**/__tests__/*.ts",
+    "src/mocks",
+    "src/unit-tests"
   ],
   "types": [ "node" ],
   "typeRoots": [ "../node_modules/@types" ],
@@ -29,6 +31,5 @@
     "rewriteTsconfig": false
   }
 
- 
-}
 
+}
