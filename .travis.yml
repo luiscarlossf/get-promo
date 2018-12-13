@@ -4,15 +4,13 @@ node_js:
 
 branches:
   only:
-    - master
-    - dev
+    - uc_4_testing
 
 before_script:
-  - npm install -g ionic cordova
   - npm install
 
 script:
-  - ionic cordova build browser --prod
+  - npm test
 
 deploy:
   provider: pages
