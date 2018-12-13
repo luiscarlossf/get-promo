@@ -41,34 +41,28 @@ beforeEach(() => {
  describe('Mudar Perfil', () =>
 {
 
-
    //Cadastra um usuário
     test('Cadastro',async () =>
    {
      let response = await this.user.cadastrar(this.apelido, this.nome, this.senha, this.email, 1);
-
       expect(response['message']).toEqual("usuario " + this.apelido + " criado");
    });
 
-
+   //Muda o nome do usuário cadastrado
     test('Mudar Nome', async () =>
    {
-
       let response = await this.user.update_nome(this.apelido,Faker.name.findName());
-
       expect(response['message']).toEqual("nome modificado com sucesso!");
    });
 
-
+   // Muda as categorias do usuário cadastrado
    test('Mudar categorias', async () =>
    {
-
       let response = await this.user.update_categorias(this.apelido,1,2,3);
-
       expect(response['message']).toEqual('categorias do usuario ' + this.apelido + ' atualizadas.');
    });
 
-
+   //Muda email do usuário cadastrado
    test('Mudar email (SUCESSO)', async () =>
    {
     let email_novo = Faker.internet.email();
@@ -78,6 +72,7 @@ beforeEach(() => {
       ' mudou seu email para ' + email_novo);
    });
 
+   //Tenta mudar o email para um que já está cadastrado
    test('Mudar email (FALHA)', async () =>
    {
     let email_novo = 'teste';
