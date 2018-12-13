@@ -8,9 +8,8 @@ branches:
 
 before_script:
   - git clone https://github.com/wesleyrf10/servidor-get-promo
-  - cd servidor-get-promo & npm install & npm start 
-  - cd ..
-  - npm install
+  - cd servidor-get-promo & npm install & npm start & cd .. && npm install
+  - cd .. & npm install & npm test
 
 script:
   - npm test
