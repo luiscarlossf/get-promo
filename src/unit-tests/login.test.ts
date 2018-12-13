@@ -20,7 +20,7 @@ beforeEach(() => {
       expect.assertions(1);
      let response = await this.login.login("maheus@test.com", "123");
 
-      expect(response).toEqual("maheus@test.com");
+      expect(response['email']).toEqual("maheus@test.com");
    });
 
 
