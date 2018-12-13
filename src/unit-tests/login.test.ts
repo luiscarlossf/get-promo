@@ -18,9 +18,9 @@ beforeEach(() => {
     test('login Válido  ',async () =>
    {
       expect.assertions(1);
-     let response = await this.login.login("maheus@test.com", "123");
+     let response = await this.login.login("victor@test.com", "123");
 
-      expect(response['email']).toEqual("maheus@test.com");
+      expect(response['email']).toEqual("victor@test.com");
    });
 
 
@@ -29,7 +29,7 @@ beforeEach(() => {
     test('email Não existe', async () =>
    {
       expect.assertions(1);
-      let response = await this.login.login("maheus1@test.com", "123");
+      let response = await this.login.login("victor1@test.com", "123");
 
       expect(response).toEqual("email não cadastrado");
    });
@@ -40,7 +40,7 @@ beforeEach(() => {
    test('Senha incorreta', async () =>
    {
       expect.assertions(1);
-      let response = await this.login.login("maheus@test.com", "1233");
+      let response = await this.login.login("victor@test.com", "1233");
 
       expect(response).toEqual("senha incorreta");
    });

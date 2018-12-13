@@ -12,17 +12,17 @@
     "test": "jest"
   },
   "jest": {
-   "transform": {
+    "transform": {
       "^.+\\.tsx?$": "ts-jest"
-   },
-   "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-   "moduleFileExtensions": [
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
       "ts",
       "tsx",
       "js",
       "json"
-   ]
- },
+    ]
+  },
   "dependencies": {
     "@angular/animations": "5.2.11",
     "@angular/common": "5.2.11",
