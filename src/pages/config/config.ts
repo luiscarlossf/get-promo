@@ -11,6 +11,7 @@ import { UserProvider } from '../../providers/user/user';
 })
 export class ConfigPage {
   user: Usuario
+  private
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private uProvider: UserProvider) {
      console.log('Criando ConfigPage');
      this.navParams.get('this.usuario');

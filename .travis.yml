@@ -4,14 +4,14 @@ node_js:
 
 branches:
   only:
-    - master
-    - dev
+    - test
 
 before_script:
   - npm install -g ionic cordova
   - npm install
 
 script:
+  - node_modules/karma/bin/karma start ./test-config/karma.conf.js --single-run
   - ionic cordova build browser --prod
 
 deploy:

@@ -3,10 +3,10 @@ import { Nav, Platform, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AlertController } from 'ionic-angular';
+
 import { CadintePage } from '../pages/cadinte/cadinte';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-
 import { InitialPage } from '../pages/initial/initial';
 import { ConfigPage } from '../pages/config/config';
 import { ProfilePage } from '../pages/profile/profile';
